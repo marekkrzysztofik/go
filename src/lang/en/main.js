@@ -51,26 +51,75 @@ export default {
     ]
   },
   processSection: {
-  title: 'Our process',
-  subtitle: 'A transparent flow for every project – from inquiry to execution and support.',
-  steps: [
-    {
-      title: 'Consultation',
-      description: 'We gather technical requirements and discuss project details.'
-    },
-    {
-      title: 'Planning',
-      description: 'We prepare the schedule and assign resources and the team.'
-    },
-    {
-      title: 'Execution',
-      description: 'We carry out installation, testing, and deliveries on schedule.'
-    },
-    {
-      title: 'Support',
-      description: 'We provide service, assistance, and long-term technical support.'
-    }
+    title: 'Our process',
+    subtitle: 'A transparent flow for every project – from inquiry to execution and support.',
+    steps: [
+      {
+        title: 'Consultation',
+        description: 'We gather technical requirements and discuss project details.'
+      },
+      {
+        title: 'Planning',
+        description: 'We prepare the schedule and assign resources and the team.'
+      },
+      {
+        title: 'Execution',
+        description: 'We carry out installation, testing, and deliveries on schedule.'
+      },
+      {
+        title: 'Support',
+        description: 'We provide service, assistance, and long-term technical support.'
+      }
+    ]
+  },
+  projectsSection: {
+    title: 'Projects and case studies',
+    subtitle: 'Explore selected implementations from around the world.',
+    projects: [
+      {
+        title: 'HPU Installation',
+        description: 'Installation of a hydraulic power unit in an offshore environment.',
+        location: 'Norway',
+        image: '/images/1.jpg'
+      },
+      {
+        title: 'Platform Upgrade',
+        description: 'Complete overhaul of pipe systems and actuators.',
+        location: 'Netherlands',
+        image: '/images/2.jpg'
+      },
+      {
+        title: 'Logistics Project',
+        description: 'Managing transport and customs clearance for system components.',
+        location: 'United Arab Emirates',
+        image: '/images/3.jpg'
+      }
+    ]
+  },
+  mapTitle: 'Our projects around the world',
+  mapSubtitle: 'GLOBAL Offshore projects in strategic offshore industry locations.',
+  mapButton: 'View our projects',
+
+  contactTitle: 'Contact',
+  departmentsTitle: 'Departments',
+  production: 'Production',
+  service: 'Service',
+  companyTitle: 'About',
+about: {
+  title: 'Who we are',
+  description: 'GLOBAL Offshore is a Polish company specializing in offshore and marine industry projects. Since 2018, we’ve been delivering hydraulic, service, and logistics solutions for clients around the world.',
+  values: [
+    'Experienced team of engineers and technicians',
+    'In-house production and mobile service',
+    'Fast response and flexible approach',
+    'Compliance with international standards (DNV, ISO)'
+  ],
+  historyTitle: 'Our history',
+  history: [
+    { year: '2018', event: 'Company founded and operations launched in Gdynia.' },
+    { year: '2020', event: 'First international offshore industry projects.' },
+    { year: '2023', event: 'Expanded services to include logistics and automation.' }
   ]
-}
+},
 
 }

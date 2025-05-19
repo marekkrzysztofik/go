@@ -5,19 +5,19 @@
         <img src="/images/logo.png" alt="GlobalOffshore">
       </div>
       <div class="footer-section">
-        <h4>Contact</h4>
+        <h4>{{ langState.t.main.contactTitle }}</h4>
         <p>Hutnicza 12<br />81-061 Gdynia, Poland</p>
         <p><a href="mailto:contact@globaloffshore.pl">contact@globaloffshore.pl</a></p>
       </div>
 
       <div class="footer-section">
-        <h4>Departments</h4>
-        <p><strong>Production:</strong><br />+48 888 293 024</p>
-        <p><strong>Service:</strong><br />+48 602 113 006</p>
+        <h4>{{ langState.t.main.departmentsTitle }}</h4>
+        <p><strong>{{ langState.t.main.production }}:</strong><br />+48 888 293 024</p>
+        <p><strong>{{ langState.t.main.service }}:</strong><br />+48 602 113 006</p>
       </div>
 
       <div class="footer-section">
-        <h4>Company</h4>
+        <h4>{{ langState.t.main.companyTitle }}</h4>
         <p>
           GLOBAL Offshore Sp. z o.o.<br />
           Czechosłowacka 3<br />
@@ -34,7 +34,9 @@
     </div>
   </footer>
 </template>
-
+<script setup>
+import langState from '@/lang/langState'
+</script>
 <style scoped>
 .footer {
   width: 100%;
@@ -60,9 +62,11 @@
   flex: 1;
   min-width: 220px;
 }
+
 .logo {
   margin-top: 30px;
 }
+
 .footer-section h4 {
   margin-bottom: 0.75rem;
   font-size: 1.1rem;

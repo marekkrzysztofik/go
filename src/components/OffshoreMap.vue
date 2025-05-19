@@ -1,13 +1,13 @@
 <template>
   <section class="map-section">
-    <h2 class="section-title">Nasze projekty na świecie</h2>
+    <h2 class="section-title">{{ langState.t.main.mapTitle}}</h2>
     <p class="section-subtitle">
-      Realizacje GLOBAL Offshore w strategicznych lokalizacjach przemysłu offshore.
+      {{ langState.t.main.mapSubtitle}}
     </p>
     <div id="chartdiv" class="map-container"></div>
     <div class="cta-wrapper">
       <button class="cta-button" @click="goToProjects">
-        Zobacz nasze realizacje
+        {{ langState.t.main.mapButton}}
       </button>
     </div>
   </section>
@@ -20,11 +20,12 @@ import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import { onMounted, onBeforeUnmount } from "vue";
 import { useRouter } from "vue-router";
+import langState from '@/lang/langState'
 
 let root;
 const router = useRouter();
 const goToProjects = () => {
-  router.push("/projects"); // Zmień na odpowiednią ścieżkę
+  router.push("/projects"); 
 };
 const projects = [
   { title: "Bergen, Norwegia", longitude: 5.33, latitude: 60.39 },

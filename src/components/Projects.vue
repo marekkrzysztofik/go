@@ -1,16 +1,10 @@
 <template>
   <section class="projects-section">
-    <h2 class="section-title">Realizacje i projekty</h2>
-    <p class="section-subtitle">Zobacz wybrane realizacje z całego świata.</p>
+    <h2 class="section-title">{{ langState.t.main.projectsSection.title }}</h2>
+<p class="section-subtitle">{{ langState.t.main.projectsSection.subtitle }}</p>
 
     <div class="projects-grid">
-      <div
-        v-for="(project, i) in projects"
-        :key="i"
-        class="project-card"
-        :data-index="i"
-        v-intersect="onIntersect"
-      >
+      <div v-for="(project, i) in projects" :key="i" class="project-card" :data-index="i" v-intersect="onIntersect">
         <img :src="project.image" :alt="project.title" class="project-image" />
         <div class="project-content">
           <h3 class="project-title">{{ project.title }}</h3>
@@ -23,29 +17,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { computed } from 'vue'
+import langState from '@/lang/langState'
 
-const projects = [
-  {
-    title: 'Instalacja HPU',
-    location: 'Norwegia',
-    image: '/images/1.jpg',
-    description: 'Montaż hydraulicznej jednostki sterującej w środowisku offshore.'
-  },
-  {
-    title: 'Modernizacja platformy',
-    location: 'Holandia',
-   image: '/images/2.jpg',
-    description: 'Generalny remont systemów rurowych i siłowników.'
-  },
-  {
-    title: 'Projekt logistyczny',
-    location: 'Zjednoczone Emiraty Arabskie',
-   image: '/images/3.jpg',
-    description: 'Zarządzanie transportem i odprawą elementów systemowych.'
-  },
- 
-]
+const projects = computed(() => langState.t.main.projectsSection.projects)
 
 function onIntersect(entry) {
   const el = entry.target
