@@ -1,7 +1,7 @@
 <template>
   <section class="stats-section">
-    <h2 class="section-title">Zaufali nam</h2>
-    <p class="section-subtitle">Doświadczenie, które budujemy globalnie.</p>
+    <h2 class="section-title">{{ langState.t.main.statsSection.title }}</h2>
+    <p class="section-subtitle">{{ langState.t.main.statsSection.subtitle }}</p>
 
     <div class="stats-grid">
       <div v-for="(stat, index) in stats" :key="index" class="stat-box" :data-index="index">
@@ -14,17 +14,24 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { Globe, Briefcase, Wrench, Clock } from 'lucide-vue-next'
+import { ref, computed, onMounted, watch, nextTick } from 'vue'
+import { Clock, Globe, Briefcase, Wrench } from 'lucide-vue-next'
+import langState from '@/lang/langState'
 
-const stats = [
-  { label: 'Lat na rynku', value: 12, suffix: '+', icon: Clock },
-  { label: 'Kraje', value: 15, suffix: '+', icon: Globe },
-  { label: 'Zrealizowane projekty', value: 200, suffix: '+', icon: Briefcase },
-  { label: 'Serwisy offshore', value: 500, suffix: '+', icon: Wrench }
-]
+// Stats jako computed
+const stats = computed(() => [
+  { label: langState.t.main.statsSection.labels.years, value: 12, suffix: '+', icon: Clock },
+  { label: langState.t.main.statsSection.labels.countries, value: 15, suffix: '+', icon: Globe },
+  { label: langState.t.main.statsSection.labels.projects, value: 200, suffix: '+', icon: Briefcase },
+  { label: langState.t.main.statsSection.labels.services, value: 500, suffix: '+', icon: Wrench }
+])
 
-const animatedValues = ref(stats.map(() => 0))
+// Animated values (dynamicznie aktualizowane)
+const animatedValues = ref([])
+
+watch(stats, (newStats) => {
+  animatedValues.value = newStats.map(() => 0)
+}, { immediate: true })
 
 function animateValue(index, to, duration = 1200) {
   const frames = 60
@@ -44,21 +51,20 @@ function animateValue(index, to, duration = 1200) {
   }, duration / frames)
 }
 
-onMounted(() => {
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        const index = Number(entry.target.getAttribute('data-index'))
+onMounted(async () => {
+  await nextTick()
 
-        if (entry.isIntersecting) {
-          animateValue(index, stats[index].value)
-        } else {
-          animatedValues.value[index] = 0 // opcjonalnie reset przy wyjściu
-        }
-      })
-    },
-    { threshold: 0.5 }
-  )
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const index = Number(entry.target.getAttribute('data-index'))
+
+      if (entry.isIntersecting) {
+        animateValue(index, stats.value[index].value)
+      } else {
+        animatedValues.value[index] = 0 // opcjonalnie reset
+      }
+    })
+  }, { threshold: 0.5 })
 
   document.querySelectorAll('.stat-box').forEach((el, i) => {
     observer.observe(el)

@@ -29,27 +29,22 @@ const projects = [
   {
     title: 'Instalacja HPU',
     location: 'Norwegia',
-    image: 'https://static.esticrm.pl/public/images/offers/20336/10586099/91438124_max.jpg',
+    image: '/images/1.jpg',
     description: 'Montaż hydraulicznej jednostki sterującej w środowisku offshore.'
   },
   {
     title: 'Modernizacja platformy',
     location: 'Holandia',
-    image: 'https://static.esticrm.pl/public/images/offers/20336/10586099/91438124_max.jpg',
+   image: '/images/2.jpg',
     description: 'Generalny remont systemów rurowych i siłowników.'
   },
   {
     title: 'Projekt logistyczny',
     location: 'Zjednoczone Emiraty Arabskie',
-    image: 'https://static.esticrm.pl/public/images/offers/20336/10586099/91438124_max.jpg',
+   image: '/images/3.jpg',
     description: 'Zarządzanie transportem i odprawą elementów systemowych.'
   },
-  {
-    title: 'Testy systemów',
-    location: 'Niemcy',
-    image: 'https://static.esticrm.pl/public/images/offers/20336/10586099/91438124_max.jpg',
-    description: 'Końcowe testy i uruchomienie instalacji offshore.'
-  }
+ 
 ]
 
 function onIntersect(entry) {
@@ -136,7 +131,7 @@ export default {
 
 .project-image {
   width: 100%;
-  height: 180px;
+  height: 250px;
   object-fit: cover;
 }
 

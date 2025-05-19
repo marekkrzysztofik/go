@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="footer-container">
-         <div class="footer-section">
+      <div class="footer-section logo">
         <img src="/images/logo.png" alt="GlobalOffshore">
       </div>
       <div class="footer-section">
@@ -34,13 +34,13 @@
     </div>
   </footer>
 </template>
- 
+
 <style scoped>
 .footer {
-  width: 100vw;
+  width: 100%;
   background-color: #fff;
   color: #1D1E2C;
-  border-top: 4px solid #D13C30;
+  border-top: 2px solid #D13C30;
   padding: 3rem 2rem 1rem;
   font-size: 0.95rem;
 }
@@ -49,16 +49,20 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
   max-width: 1280px;
   margin: 0 auto;
   gap: 2rem;
 }
 
 .footer-section {
+  margin-top: 20px;
   flex: 1;
   min-width: 220px;
 }
-
+.logo {
+  margin-top: 30px;
+}
 .footer-section h4 {
   margin-bottom: 0.75rem;
   font-size: 1.1rem;

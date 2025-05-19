@@ -1,7 +1,7 @@
 <template>
   <section class="process-section">
-    <h2 class="section-title">Proces współpracy</h2>
-    <p class="section-subtitle">Przejrzysty przebieg każdego projektu – od zapytania po realizację i wsparcie.</p>
+     <h2 class="section-title">{{ langState.t.main.processSection.title }}</h2>
+    <p class="section-subtitle">{{ langState.t.main.processSection.subtitle }}</p>
 
     <div class="steps-wrapper">
       <div
@@ -11,41 +11,29 @@
         :data-index="index"
         v-intersect="onIntersect"
       >
-        <div class="icon-circle">
+        <div class="circle-wrapper">{{ index + 1 }}</div>
+        <div class="step-content">
           <component :is="step.icon" class="icon" />
+          <h3 class="step-title">{{ step.title }}</h3>
+          <p class="step-description">{{ step.description }}</p>
         </div>
-        <h3 class="step-title">{{ step.title }}</h3>
-        <p class="step-description">{{ step.description }}</p>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { ClipboardList, CalendarClock, Wrench, LifeBuoy } from 'lucide-vue-next'
+import langState from '@/lang/langState'
 
-const steps = [
-  {
-    title: '1. Konsultacja',
-    description: 'Zbieramy wymagania techniczne, omawiamy szczegóły projektu.',
-    icon: ClipboardList
-  },
-  {
-    title: '2. Planowanie',
-    description: 'Opracowujemy harmonogram, dobieramy zasoby i zespół.',
-    icon: CalendarClock
-  },
-  {
-    title: '3. Realizacja',
-    description: 'Wykonujemy montaż, testy i dostawy w ustalonych terminach.',
-    icon: Wrench
-  },
-  {
-    title: '4. Wsparcie',
-    description: 'Zapewniamy serwis, pomoc i długoterminowe wsparcie techniczne.',
-    icon: LifeBuoy
-  }
-]
+const icons = [ClipboardList, CalendarClock, Wrench, LifeBuoy]
+const steps = computed(() =>
+  langState.t.main.processSection.steps.map((step, index) => ({
+    ...step,
+    icon: icons[index]
+  }))
+)
 
 function onIntersect(entry) {
   const el = entry.target
@@ -102,13 +90,16 @@ export default {
 .section-subtitle {
   font-size: 18px;
   color: #666;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .steps-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  padding-top: 40px;
 }
 
 @media (min-width: 768px) {
@@ -116,19 +107,29 @@ export default {
     flex-direction: row;
     justify-content: space-between;
   }
+
+  .steps-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 65px;
+    left: 100px;
+    right: 100px;
+    height: 2px;
+    background-color: #d63830;
+    z-index: 0;
+  }
 }
 
 .step-box {
-  background-color: #ffffff;
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  flex: 1;
-  max-width: 280px;
-  margin: 0 auto;
-  transition: all 0.6s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 240px;
+  height: 300px;
+  position: relative;
   opacity: 0;
   transform: translateY(40px);
+  transition: all 0.6s ease;
 }
 
 .step-box.visible {
@@ -136,27 +137,43 @@ export default {
   transform: translateY(0);
 }
 
-.icon-circle {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 16px;
+.circle-wrapper {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background-color: #d63830;
+  background: #d63830;
+  color: #fff;
+  font-weight: bold; 
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-content {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  height: 250px;
 }
 
 .icon {
   width: 28px;
   height: 28px;
-  color: #fff;
+  color: #d63830;
+  margin-bottom: 10px;
 }
 
 .step-title {
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .step-description {

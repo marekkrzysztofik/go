@@ -1,12 +1,11 @@
 <template>
   <HeroSection />
   <WhyUs />
-  
+
   <Services />
-  <Services2 />
-    <Services3 />
-      <Projects />
-      <Process />
+  <Process />
+  <Projects />
+
   <OffshoreMap />
 </template>
 

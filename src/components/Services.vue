@@ -1,7 +1,7 @@
 <template>
   <section class="our-offer">
-    <h2 class="section-title">Nasza oferta</h2>
-    <p class="section-subtitle">Kompleksowe wsparcie od projektowania, przez serwis, aż po logistykę.</p>
+   <h2 class="section-title">{{ langState.t.main.ourOffer.title }}</h2>
+<p class="section-subtitle">{{ langState.t.main.ourOffer.subtitle }}</p>
 
     <div class="columns-grid">
       <div v-for="(group, index) in groupedServices" :key="index" class="offer-group">
@@ -19,6 +19,8 @@
 </template>
 
 <script setup>
+import langState from '@/lang/langState'
+import { computed } from 'vue'
 import {
   ClipboardList,
   Wrench,
@@ -34,83 +36,21 @@ import {
   Search
 } from 'lucide-vue-next'
 
-const groupedServices = [
-  {
-    name: 'Produkcja',
-    services: [
-      {
-        title: 'Zarządzanie projektami',
-        description: 'Pełna kontrola i koordynacja projektów technicznych.',
-        icon: ClipboardList
-      },
-      {
-        title: 'Montaż mechaniczny',
-        description: 'Profesjonalny montaż urządzeń i systemów.',
-        icon: Wrench
-      },
-      {
-        title: 'Instalacje hydrauliczne',
-        description: 'Precyzyjne układy wysokociśnieniowe.',
-        icon: Droplet
-      },
-      // {
-      //   title: 'Jednostki sterujące',
-      //   description: 'Montaż HPU i zaawansowanych modułów kontrolnych.',
-      //   icon: Cpu
-      // }
-    ]
-  },
-  {
-    name: 'Serwis',
-    services: [
-      {
-        title: 'Inspekcje',
-        description: 'Kontrola i ocena stanu technicznego urządzeń.',
-        icon: Eye
-      },
-      {
-        title: 'Rozwiązywanie usterek',
-        description: 'Szybka diagnostyka i naprawa.',
-        icon: Bug
-      },
-      {
-        title: 'Testy i uruchomienia',
-        description: 'Kompleksowe testy końcowe i certyfikacja.',
-        icon: CheckCircle
-      },
-      // {
-      //   title: 'Remonty techniczne',
-      //   description: 'Generalne przeglądy i modernizacje.',
-      //   icon: RotateCcw
-      // }
-    ]
-  },
-  {
-    name: 'Sprzedaż i logistyka',
-    services: [
-      {
-        title: 'Dostawy części',
-        description: 'Komponenty OEM i zamienne.',
-        icon: Package
-      },
-      {
-        title: 'Logistyka i transport',
-        description: 'Globalna obsługa dostaw i spedycji.',
-        icon: Truck
-      },
-      // {
-      //   title: 'Odprawy celne',
-      //   description: 'Pełna dokumentacja i obsługa urzędowa.',
-      //   icon: BadgeCheck
-      // },
-      {
-        title: 'Zakupy techniczne',
-        description: 'Dobór i sourcing komponentów specjalistycznych.',
-        icon: Search
-      }
-    ]
-  }
+const iconMatrix = [
+  [ClipboardList, Wrench, Droplet],
+  [Eye, Bug, CheckCircle],
+  [Package, Truck, Search]
 ]
+
+const groupedServices = computed(() =>
+  langState.t.main.ourOffer.groups.map((group, groupIndex) => ({
+    name: group.name,
+    services: group.services.map((service, serviceIndex) => ({
+      ...service,
+      icon: iconMatrix[groupIndex][serviceIndex]
+    }))
+  }))
+)
 </script>
 
 <style scoped>

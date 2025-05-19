@@ -1,75 +1,168 @@
 <template>
     <header class="navbar">
         <div class="navbar-inner">
-            <img src="@/assets/logo.png" alt="Logo" class="logo" />
+            <RouterLink to="/" class="logo-link">
+                <img src="@/assets/logo.png" alt="Logo" class="logo" />
+            </RouterLink>
 
-            <ul class="nav-menu">
-                <li>
-                    <RouterLink to="/" class="nav-item" :class="{ active: route.path === '/' }">Home</RouterLink>
-                </li>
-                <li>
-                    <RouterLink to="/about" class="nav-item">About</RouterLink>
-                </li>
-                <li>
-                    <RouterLink to="/services" class="nav-item">Services</RouterLink>
-                </li>
-                <li>
-                    <RouterLink to="/projects" class="nav-item">Projects</RouterLink>
-                </li>
-                <li>
-                    <RouterLink to="/contact" class="nav-cta">Let’s Talk</RouterLink>
-                </li>
-            </ul>
+            <button class="hamburger" @click="toggleMenu" :aria-expanded="isMenuOpen">
+                <span :class="{ open: isMenuOpen }"></span>
+                <span :class="{ open: isMenuOpen }"></span>
+                <span :class="{ open: isMenuOpen }"></span>
+            </button>
+
+            <transition name="slide-fade">
+                <ul v-show="isMenuOpen || isDesktop" class="nav-menu" :class="{ desktop: isDesktop }">
+                    <li>
+                        <RouterLink to="/" class="nav-item" :class="{ active: route.path === '/' }">{{
+                            langState.t.main.navbar.home }}</RouterLink>
+                    </li>
+                    <li>
+                        <RouterLink to="/about" class="nav-item" :class="{ active: route.path === '/about' }">{{
+                            langState.t.main.navbar.about }}</RouterLink>
+                    </li>
+                    <li>
+                        <RouterLink to="/uslugi" class="nav-item" :class="{ active: route.path === '/services' }">{{
+                            langState.t.main.navbar.services }}</RouterLink>
+                    </li>
+                    <li>
+                        <RouterLink to="/projects" class="nav-item" :class="{ active: route.path === '/projects' }">{{
+                            langState.t.main.navbar.projects }}</RouterLink>
+                    </li>
+                    <li>
+                         <RouterLink to="/contact" class="nav-item" :class="{ active: route.path === '/contact' }">{{
+                            langState.t.main.navbar.contact }}</RouterLink>
+                    </li>
+                  
+                       
+                        <button class="lang-toggle" @click="toggleLang">
+                            <Globe class="icon" />
+                            {{ langState.lang.toUpperCase() }}
+                        </button>
+                  
+
+                </ul>
+            </transition>
         </div>
     </header>
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
+import langState from '@/lang/langState'
+import { Globe } from 'lucide-vue-next'
+
 const route = useRoute()
+const isMenuOpen = ref(false)
+const isDesktop = ref(window.innerWidth > 1024)
+
+function toggleLang() {
+    langState.lang = langState.lang === 'pl' ? 'en' : 'pl'
+}
+
+function toggleMenu() {
+    if (!isDesktop.value) isMenuOpen.value = !isMenuOpen.value
+}
+
+function handleResize() {
+    isDesktop.value = window.innerWidth > 1024
+    if (isDesktop.value) isMenuOpen.value = false
+}
+
+onMounted(() => {
+    window.addEventListener('resize', handleResize)
+})
+onUnmounted(() => {
+    window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <style scoped>
 /* Navbar */
 .navbar {
-    width: 98vw;
+    width: 100%;
     background: white;
-    padding: 1.2rem 2rem;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    z-index: 10;
+    padding: 1rem 2rem;
     position: sticky;
     top: 0;
-    border-style: solid;
-    border-color: var(--primary);
-    border-width: 0 0 2px 0;
-    
+    border-bottom: 2px solid var(--primary);
     z-index: 1000;
 }
 
 .navbar-inner {
-    width: 100%;
-    max-width: 1280px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    height: 70px;
+    height: 60px;
 }
 
+.logo-link {
+    margin-left: 20px;
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 999;
+    padding: 0;
+}
+
+.hamburger span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center center;
+    margin: 4px auto;
+}
+
+.hamburger span.open:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger span.open:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger span.open:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Menu */
 .nav-menu {
     display: flex;
-    gap: 2rem;
+    flex-direction: column;
     list-style: none;
+    gap: 1rem;
+    padding: 0;
+    overflow: hidden;
+    max-height: 500px;
+}
+
+.nav-menu.desktop {
+    flex-direction: row;
     align-items: center;
     margin: 0;
+    gap: 2rem;
+    max-height: none;
 }
 
 .nav-item {
-    color: #1D1E2C;
+    color: #1d1e2c;
     text-decoration: none;
     font-weight: 500;
     position: relative;
@@ -82,7 +175,7 @@ const route = useRoute()
     left: 0;
     width: 0%;
     height: 2px;
-    background: #D13C30;
+    background: #d13c30;
     transition: width 0.3s;
 }
 
@@ -92,16 +185,74 @@ const route = useRoute()
 }
 
 .nav-cta {
-    padding: 0.5rem 1.2rem;
-    background: #D13C30;
     color: white;
-    border-radius: 24px;
-    font-weight: 600;
     text-decoration: none;
-    transition: background 0.3s;
 }
 
 .nav-cta:hover {
     background: #a7281f;
+}
+
+.lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 0.5rem 1.2rem;
+    background-color: var(--primary);
+    border: 2px solid var(--primary);
+    color: var(--white);
+    border-radius: 24px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lang-toggle:hover {
+    background: #a7281f;
+}
+
+.lang-toggle .icon {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.5;
+}
+
+/* Animacja rozwijanego menu */
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        padding: 1rem 2rem;
+        border-top: 1px solid #eee;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-item,
+    .nav-cta,
+    .lang-toggle {
+        width: 100%;
+    }
 }
 </style>

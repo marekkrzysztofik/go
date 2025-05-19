@@ -5,7 +5,7 @@
       Realizacje GLOBAL Offshore w strategicznych lokalizacjach przemysłu offshore.
     </p>
     <div id="chartdiv" class="map-container"></div>
-     <div class="cta-wrapper">
+    <div class="cta-wrapper">
       <button class="cta-button" @click="goToProjects">
         Zobacz nasze realizacje
       </button>
@@ -79,10 +79,10 @@ onMounted(() => {
     strokeWidth: 0.3
   });
 
-polygonSeries.mapPolygons.template.states.create("hover", {
-  fill: am5.color("#d63830"),
-  fillOpacity: 0.3
-});
+  polygonSeries.mapPolygons.template.states.create("hover", {
+    fill: am5.color("#d63830"),
+    fillOpacity: 0.3
+  });
   const pointSeries = chart.series.push(
     am5map.MapPointSeries.new(root, {
       latitudeField: "latitude",
@@ -137,12 +137,13 @@ onBeforeUnmount(() => {
 }
 
 .map-container {
-  width: 100%;
+  width: 92vw;
   height: 600px;
   border-radius: 16px;
   margin: 0 auto;
   background-color: #ffffff;
 }
+
 .cta-wrapper {
   margin-top: 1rem;
 }

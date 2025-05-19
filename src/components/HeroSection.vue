@@ -2,14 +2,13 @@
     <div class="hero-container">
         <section class="hero">
             <div class="hero-text">
-                <h1>Designing Your Next Chapter.</h1>
+                <h1>{{ langState.t.main.heroTitle }}</h1>
                 <p>
-                    Global Offshore delivers trusted marine & offshore services — from hydraulic systems to project
-                    support.
+                    {{ langState.t.main.heroSubtitle }}
                 </p>
                 <div class="hero-actions">
-                    <RouterLink to="/projects" class="btn-primary">Explore Projects</RouterLink>
-                    <button class="btn-secondary">Our Process</button>
+                    <RouterLink to="/projects" class="btn-primary"> {{ langState.t.main.heroButton }}</RouterLink>
+                    <button class="btn-secondary">{{ langState.t.main.heroProcessTitle }}</button>
                 </div>
             </div>
             <div class="hero-image">
@@ -21,6 +20,7 @@
 
 <script setup>
 import { useRoute } from 'vue-router'
+import langState from '@/lang/langState'
 const route = useRoute()
 </script>
 
