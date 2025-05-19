@@ -123,22 +123,12 @@ export default {
     { year: '2023', event: 'Rozszerzenie usług o logistykę i automatyzację.' }
   ],
   },
-  
+  contactPage: {
+  title: 'Skontaktuj się z nami',
+  subtitle: 'Jesteśmy dostępni pod telefonem, mailem lub osobiście w naszej siedzibie.',
+  email: 'contact@globaloffshore.pl'
+}
 
 
-
-
-
-
-  
-  contactSubtitle: 'Masz pytania? Chcesz umówić spotkanie? Napisz, zadzwoń lub odwiedź nas osobiście!',
-  phone: 'Telefon',
-  address: 'Adres',
-  hours: 'Godziny pracy',
-  name: "Imię i nazwisko",
-  message: 'Wiadomość',
-  send: 'Wyślij wiadomość',
-  policy: 'Twoje dane są bezpieczne. Wysyłając wiadomość, akceptujesz naszą politykę prywatności',
-  contactus: 'Skontaktuj się z nami!'
 
 }

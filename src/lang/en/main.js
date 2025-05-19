@@ -121,5 +121,9 @@ about: {
     { year: '2023', event: 'Expanded services to include logistics and automation.' }
   ]
 },
-
+contactPage: {
+  title: 'Get in touch with us',
+  subtitle: 'You can reach us by phone, email, or visit our office.',
+  email: 'contact@globaloffshore.pl'
+}
 }

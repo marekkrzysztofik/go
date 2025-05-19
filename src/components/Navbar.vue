@@ -2,7 +2,7 @@
     <header class="navbar">
         <div class="navbar-inner">
             <RouterLink to="/" class="logo-link">
-                <img src="@/assets/logo.png" alt="Logo" class="logo" />
+                <img src="/images/logo.png" alt="Logo" class="logo" />
             </RouterLink>
 
             <button class="hamburger" @click="toggleMenu" :aria-expanded="isMenuOpen">
@@ -30,7 +30,7 @@
                             langState.t.main.navbar.projects }}</RouterLink>
                     </li>
                     <li>
-                         <RouterLink to="/contact" class="nav-item" :class="{ active: route.path === '/contact' }">{{
+                         <RouterLink to="/kontakt" class="nav-item" :class="{ active: route.path === '/kontakt' }">{{
                             langState.t.main.navbar.contact }}</RouterLink>
                     </li>
                   
