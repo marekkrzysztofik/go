@@ -57,8 +57,9 @@ import { MapPin, Mail, Phone } from 'lucide-vue-next'
 }
 
 .section-title {
-  font-size: 2.2rem;
-  color: #d63830;
+  font-size: 2rem;
+  color: var(--redtitle);
+  font-weight: 600;
   margin-bottom: 0.5rem;
 }
 

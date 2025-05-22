@@ -103,9 +103,10 @@ onMounted(async () => {
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
-  color: var(--title);
+  color: var(--redtitle);
 }
 
 .section-subtitle {

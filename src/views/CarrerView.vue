@@ -69,6 +69,8 @@ const selectedJob = computed(() => jobs.value[selectedIndex.value])
     text-align: center;
     margin-bottom: 2rem;
     font-size: 2rem;
+    font-weight: 600;
+    color: var(--redtitle);
 }
 
 .career-layout {

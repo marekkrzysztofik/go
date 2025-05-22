@@ -1,5 +1,5 @@
 <template>
-  <section class="our-offer">
+  <section id="services" class="our-offer">
     <h2 class="section-title">{{ langState.t.main.ourOffer.title }}</h2>
     <p class="section-subtitle">{{ langState.t.main.ourOffer.subtitle }}</p>
 
@@ -92,8 +92,10 @@ onBeforeUnmount(() => {
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
+  color: var(--redtitle);
 }
 
 .section-subtitle {

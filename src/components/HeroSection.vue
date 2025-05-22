@@ -45,7 +45,8 @@ const route = useRoute()
 
 .hero h1 {
     font-size: 2.8rem;
-    color: var(--title);
+    font-weight: 600;
+    color: var(--redtitle);
     margin-bottom: 1rem;
 }
 

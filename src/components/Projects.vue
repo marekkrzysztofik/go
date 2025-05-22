@@ -69,10 +69,10 @@ export default {
 }
 
 .section-title {
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 10px;
- color: var(--title);
+  font-size: 2.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--redtitle);
 }
 
 .section-subtitle {

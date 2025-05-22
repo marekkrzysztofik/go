@@ -12,7 +12,11 @@
             </button>
 
             <transition name="slide-fade">
-                <ul v-show="isMenuOpen || isDesktop" class="nav-menu" :class="{ desktop: isDesktop }">
+                <ul v-show="isMenuOpen || isDesktop" class="nav-menu" @click="toggleMenu" :class="{ desktop: isDesktop }">
+                    <li>
+                        <RouterLink :to="{ path: '/', hash: '#services' }" class="nav-item" :class="{ active: route.path === '/uslugi' }">{{
+                            langState.t.main.navbar.services }}</RouterLink>
+                    </li>
                     <li>
                         <RouterLink to="/about" class="nav-item" :class="{ active: route.path === '/about' }">{{
                             langState.t.main.navbar.about }}</RouterLink>
@@ -21,10 +25,6 @@
                         <RouterLink to="/kariera" class="nav-item" :class="{ active: route.path === '/kariera' }">
                             {{
                                 langState.t.main.navbar.carrers }}</RouterLink>
-                    </li>
-                    <li>
-                        <RouterLink to="/uslugi" class="nav-item" :class="{ active: route.path === '/uslugi' }">{{
-                            langState.t.main.navbar.services }}</RouterLink>
                     </li>
                     <li>
                         <RouterLink to="/kontakt" class="nav-item" :class="{ active: route.path === '/kontakt' }">{{
@@ -181,7 +181,7 @@ onUnmounted(() => {
 }
 
 .nav-item {
-    color: var(--title);
+    color: var(--redtitle);
     text-decoration: none;
     font-weight: 500;
     position: relative;
