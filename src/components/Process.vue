@@ -85,11 +85,12 @@ export default {
   font-size: 36px;
   font-weight: bold;
   margin-bottom: 10px;
+ color: var(--title);
 }
 
 .section-subtitle {
   font-size: 18px;
-  color: #666;
+  color: var(--subtitle);
   margin-bottom: 60px;
 }
 
@@ -174,10 +175,11 @@ export default {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 6px;
+  color: var(--title);
 }
 
 .step-description {
   font-size: 15px;
-  color: #444;
+  color: var(--subtitle);
 }
 </style>

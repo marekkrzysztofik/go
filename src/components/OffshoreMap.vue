@@ -1,15 +1,10 @@
 <template>
   <section class="map-section">
-    <h2 class="section-title">{{ langState.t.main.mapTitle}}</h2>
+    <h2 class="section-title">{{ langState.t.main.mapTitle }}</h2>
     <p class="section-subtitle">
-      {{ langState.t.main.mapSubtitle}}
+      {{ langState.t.main.mapSubtitle }}
     </p>
     <div id="chartdiv" class="map-container"></div>
-    <div class="cta-wrapper">
-      <button class="cta-button" @click="goToProjects">
-        {{ langState.t.main.mapButton}}
-      </button>
-    </div>
   </section>
 </template>
 
@@ -25,7 +20,7 @@ import langState from '@/lang/langState'
 let root;
 const router = useRouter();
 const goToProjects = () => {
-  router.push("/projects"); 
+  router.push("/projects");
 };
 const projects = [
   { title: "Bergen, Norwegia", longitude: 5.33, latitude: 60.39 },
@@ -117,7 +112,7 @@ onBeforeUnmount(() => {
 <style scoped>
 .map-section {
   background-color: #ffffff;
-  color: #001120;
+  color: var(--title);
   padding: 4rem 2rem;
   text-align: center;
 }
@@ -131,7 +126,7 @@ onBeforeUnmount(() => {
 .section-subtitle {
   font-size: 1.1rem;
   margin-bottom: 2rem;
-  color: #555;
+  color: var(--subtitle);
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;

@@ -7,12 +7,12 @@
                     {{ langState.t.main.heroSubtitle }}
                 </p>
                 <div class="hero-actions">
-                    <RouterLink to="/projects" class="btn-primary"> {{ langState.t.main.heroButton }}</RouterLink>
-                    <button class="btn-secondary">{{ langState.t.main.heroProcessTitle }}</button>
+                    <RouterLink to="/zgloszenie" class="btn-primary"> {{ langState.t.main.heroButton }}</RouterLink>
+                   
                 </div>
             </div>
             <div class="hero-image">
-                <img src="/images/crane.jpg" alt="Hero Image" class="image" />
+                <img src="/images/crane.png" alt="Hero Image" class="image" />
             </div>
         </section>
     </div>
@@ -31,39 +31,40 @@ const route = useRoute()
     display: grid;
     grid-template-columns: 1.25fr 1.75fr;
     align-items: center;
-    margin: 1rem auto;
-
+    margin: 2rem auto;
     flex-wrap: wrap;
     background: white;
     border-radius: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
 .hero-text {
-
     padding: 1rem 3rem;
 }
 
 .hero h1 {
     font-size: 2.8rem;
-    color: #1D1E2C;
+    color: var(--title);
     margin-bottom: 1rem;
 }
 
 .hero p {
     font-size: 1.1rem;
-    color: #444;
+    color:  var(--subtitle);
     margin-bottom: 2rem;
 }
 
 .hero-actions {
+    width: 100%;
     display: flex;
+    justify-content: center;
     gap: 1rem;
-    flex-wrap: wrap;
+    
 }
 
 .btn-primary {
-    background-color: #D13C30;
+    background-color: var(--primary);
     color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 999px;
@@ -78,8 +79,9 @@ const route = useRoute()
 
 .btn-secondary {
     background: transparent;
-    border: 2px solid #1D1E2C;
-    color: #1D1E2C;
+    border: 2px solid var(--title);
+    color: var(--title);
+    text-decoration: none;
     padding: 0.7rem 1.4rem;
     border-radius: 999px;
     font-weight: 600;
@@ -88,7 +90,7 @@ const route = useRoute()
 }
 
 .btn-secondary:hover {
-    background-color: #1D1E2C;
+    background-color: var(--title);
     color: white;
 }
 
@@ -100,5 +102,24 @@ const route = useRoute()
     width: 100%;
     border-radius: 15px;
     object-fit: cover;
+}
+
+
+@media (max-width: 1024px) {
+    .hero {
+        display: flex;
+    }
+
+    .hero-image {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
 }
 </style>

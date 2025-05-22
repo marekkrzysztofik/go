@@ -4,9 +4,23 @@
     <p class="section-subtitle">{{ langState.t.main.statsSection.subtitle }}</p>
 
     <div class="stats-grid">
-      <div v-for="(stat, index) in stats" :key="index" class="stat-box" :data-index="index">
-        <component :is="stat.icon" class="icon" />
-        <div class="value">{{ animatedValues[index] }}{{ stat.suffix }}</div>
+      <div
+        v-for="(stat, index) in stats"
+        :key="index"
+        class="stat-box"
+        :data-index="index"
+      >
+        <component
+          :is="stat.icon"
+          class="icon"
+          :class="{ drawn: drawnIcons.includes(index) }"
+        />
+        <div
+          class="value"
+          :class="{ bounce: bouncingValues.includes(index) }"
+        >
+          {{ animatedValues[index] }}{{ stat.suffix }}
+        </div>
         <div class="label">{{ stat.label }}</div>
       </div>
     </div>
@@ -14,11 +28,10 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch, nextTick } from 'vue'
+import { ref, computed, onMounted, nextTick, watch } from 'vue'
 import { Clock, Globe, Briefcase, Wrench } from 'lucide-vue-next'
 import langState from '@/lang/langState'
 
-// Stats jako computed
 const stats = computed(() => [
   { label: langState.t.main.statsSection.labels.years, value: 12, suffix: '+', icon: Clock },
   { label: langState.t.main.statsSection.labels.countries, value: 15, suffix: '+', icon: Globe },
@@ -26,8 +39,9 @@ const stats = computed(() => [
   { label: langState.t.main.statsSection.labels.services, value: 500, suffix: '+', icon: Wrench }
 ])
 
-// Animated values (dynamicznie aktualizowane)
 const animatedValues = ref([])
+const bouncingValues = ref([])
+const drawnIcons = ref([])
 
 watch(stats, (newStats) => {
   animatedValues.value = newStats.map(() => 0)
@@ -47,6 +61,11 @@ function animateValue(index, to, duration = 1200) {
     if (frame >= frames) {
       clearInterval(interval)
       animatedValues.value[index] = to
+      bouncingValues.value.push(index)
+
+      setTimeout(() => {
+        bouncingValues.value = bouncingValues.value.filter(i => i !== index)
+      }, 300)
     }
   }, duration / frames)
 }
@@ -60,13 +79,17 @@ onMounted(async () => {
 
       if (entry.isIntersecting) {
         animateValue(index, stats.value[index].value)
+        if (!drawnIcons.value.includes(index)) {
+          drawnIcons.value.push(index)
+        }
       } else {
-        animatedValues.value[index] = 0 // opcjonalnie reset
+        animatedValues.value[index] = 0
+        drawnIcons.value = drawnIcons.value.filter(i => i !== index)
       }
     })
   }, { threshold: 0.5 })
 
-  document.querySelectorAll('.stat-box').forEach((el, i) => {
+  document.querySelectorAll('.stat-box').forEach((el) => {
     observer.observe(el)
   })
 })
@@ -82,12 +105,13 @@ onMounted(async () => {
 .section-title {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
+  color: var(--title);
 }
 
 .section-subtitle {
   font-size: 1.1rem;
   margin-bottom: 3rem;
-  color: #bfbfbd;
+  color: var(--subtitle);
 }
 
 .stats-grid {
@@ -99,7 +123,7 @@ onMounted(async () => {
 
 .stat-box {
   background-color: #ffffff;
-  color: #001120;
+  color: var(--title);
   padding: 2rem;
   border-radius: 12px;
   border-top: 4px solid #d63830;
@@ -111,21 +135,84 @@ onMounted(async () => {
   transform: translateY(-4px);
 }
 
-.icon {
-  width: 36px;
-  height: 36px;
-  color: #d63830;
-  margin: 0 auto 1rem;
-}
-
+/* Bounce effect */
 .value {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.value.bounce {
+  animation: bounceScale 0.3s ease;
+}
+
+@keyframes bounceScale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Draw icons – ALL SVG elements */
+::v-deep(.icon path),
+::v-deep(.icon line),
+::v-deep(.icon polyline),
+::v-deep(.icon circle),
+::v-deep(.icon rect) {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: none;
+}
+
+.icon.drawn ::v-deep(path),
+.icon.drawn ::v-deep(line),
+.icon.drawn ::v-deep(polyline),
+.icon.drawn ::v-deep(circle),
+.icon.drawn ::v-deep(rect) {
+  animation: drawIcon 3s ease-out forwards;
+}
+
+@keyframes drawIcon {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  margin: 0 auto 1rem;
+  stroke: #d63830;
 }
 
 .label {
   font-size: 1rem;
-  color: #333;
+  color: var(--subtitle);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .stats-section {
+    width: 90%;
+    padding: 4rem 1.5rem;
+  }
+
+  .section-title {
+    text-align: left;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 3rem;
+    color: #bfbfbd;
+  }
 }
 </style>

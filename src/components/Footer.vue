@@ -41,8 +41,8 @@ import langState from '@/lang/langState'
 .footer {
   width: 100%;
   background-color: #fff;
-  color: #1D1E2C;
-  border-top: 2px solid #D13C30;
+  color: var(--title);
+  border-top: 2px solid var(--primary);
   padding: 3rem 2rem 1rem;
   font-size: 0.95rem;
 }
@@ -70,11 +70,11 @@ import langState from '@/lang/langState'
 .footer-section h4 {
   margin-bottom: 0.75rem;
   font-size: 1.1rem;
-  color: #D13C30;
+  color: var(--primary);
 }
 
 .footer-section a {
-  color: #D13C30;
+  color: var(--primary);
   text-decoration: none;
 }
 
@@ -87,11 +87,11 @@ import langState from '@/lang/langState'
   margin-top: 2rem;
   border-top: 1px solid #eee;
   padding-top: 1rem;
-  color: #777;
+  color: var(--subtitle);
 }
 
 .footer-bottom a {
-  color: #D13C30;
+  color: var(--primary);
   font-weight: 500;
 }
 </style>

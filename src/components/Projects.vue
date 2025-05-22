@@ -72,11 +72,12 @@ export default {
   font-size: 36px;
   font-weight: bold;
   margin-bottom: 10px;
+ color: var(--title);
 }
 
 .section-subtitle {
   font-size: 18px;
-  color: #666;
+  color: var(--subtitle);
   margin-bottom: 50px;
 }
 
@@ -119,7 +120,7 @@ export default {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 6px;
-  color: #001120;
+  color: var(--title);
 }
 
 .project-location {
@@ -130,7 +131,7 @@ export default {
 
 .project-description {
   font-size: 15px;
-  color: #444;
+  color: var(--subtitle);
 }
 
 @media (min-width: 600px) {

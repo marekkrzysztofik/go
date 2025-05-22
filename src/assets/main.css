@@ -2,8 +2,12 @@
 
 :root {
   --primary: #D13C30;
-  --black: #000;
+  --title: #1a1a1a;
+  --subtitle: #666666;
+  --black: #3A3335;
   --white: #fff;
+  --blue: #575790;
+  --grey: #575761;
 }
 
 * {
@@ -11,6 +15,7 @@
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: "Poppins", sans-serif;
   color: #000;
@@ -19,13 +24,23 @@ body {
 .flex {
   display: flex;
 }
+
 .align-center {
   align-items: center;
 }
+
 .app {
   margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 524px) {
+
+  html,
+  body {
+    overflow-x: hidden !important;
+  }
 }

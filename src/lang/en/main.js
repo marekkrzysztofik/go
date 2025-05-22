@@ -8,8 +8,8 @@ export default {
   },
   heroTitle: 'We design your next chapter.',
   heroSubtitle: 'Global Offshore provides proven marine and offshore services — from hydraulic systems to project support.',
-  heroButton: 'View projects',
-  heroProcessTitle: 'Our process',
+  heroButton: 'Report an issue',
+  heroProcessTitle: 'View projects',
   statsSection: {
     title: 'Our numbers speak for themselves',
     subtitle: 'Over a decade of experience and hundreds of completed projects around the world.',
@@ -104,26 +104,27 @@ export default {
   departmentsTitle: 'Departments',
   production: 'Production',
   service: 'Service',
+  address: 'Address',
   companyTitle: 'About',
-about: {
-  title: 'Who we are',
-  description: 'GLOBAL Offshore is a Polish company specializing in offshore and marine industry projects. Since 2018, we’ve been delivering hydraulic, service, and logistics solutions for clients around the world.',
-  values: [
-    'Experienced team of engineers and technicians',
-    'In-house production and mobile service',
-    'Fast response and flexible approach',
-    'Compliance with international standards (DNV, ISO)'
-  ],
-  historyTitle: 'Our history',
-  history: [
-    { year: '2018', event: 'Company founded and operations launched in Gdynia.' },
-    { year: '2020', event: 'First international offshore industry projects.' },
-    { year: '2023', event: 'Expanded services to include logistics and automation.' }
-  ]
-},
-contactPage: {
-  title: 'Get in touch with us',
-  subtitle: 'You can reach us by phone, email, or visit our office.',
-  email: 'contact@globaloffshore.pl'
-}
+  about: {
+    title: 'Who we are',
+    description: 'GLOBAL Offshore is a Polish company specializing in offshore and marine industry projects. Since 2018, we’ve been delivering hydraulic, service, and logistics solutions for clients around the world.',
+    values: [
+      'Experienced team of engineers and technicians',
+      'In-house production and mobile service',
+      'Fast response and flexible approach',
+      'Compliance with international standards (DNV, ISO)'
+    ],
+    historyTitle: 'Our history',
+    history: [
+      { year: '2018', event: 'Company founded and operations launched in Gdynia.' },
+      { year: '2020', event: 'First international offshore industry projects.' },
+      { year: '2023', event: 'Expanded services to include logistics and automation.' }
+    ]
+  },
+  contactPage: {
+    title: 'Get in touch with us',
+    subtitle: 'You can reach us by phone, email, or visit our office.',
+    email: 'contact@globaloffshore.pl'
+  }
 }

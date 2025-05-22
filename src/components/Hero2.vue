@@ -26,9 +26,10 @@
   margin: 0 auto;
   height: 550px;
   border-radius: 30px;
-  background: url('/images/crane.jpg');
-  background-size: cover;
-  background-position: center;
+  background: url('/images/crane.png');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: 350px 0px;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -42,7 +43,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(29, 30, 44, 0.3), rgba(29, 30, 44, 0.1));
+ 
   z-index: 0;
   border-radius: 30px;
 }
@@ -56,7 +57,7 @@
   z-index: 1;
   width: 85vw;
   padding: 1rem;
-  color: white;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .hero-text {
@@ -73,7 +74,7 @@
   font-size: 1.1rem;
   margin-bottom: 2rem;
   line-height: 1.6;
-  color: #f2f2f2;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .hero-actions {
@@ -84,7 +85,7 @@
 }
 
 .btn-primary {
-  background-color: #D13C30;
+  background-color: var(--primary);
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 999px;

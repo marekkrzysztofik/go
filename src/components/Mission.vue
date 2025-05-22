@@ -1,7 +1,7 @@
 <template>
   <section class="mission">
     <div class="mission-wrapper">
-      <img src="/images/cylinder.jpg" alt="Mission visual" class="mission-image" />
+      <img src="/images/1.jpg" alt="Mission visual" class="mission-image" />
 
       <div class="mission-points">
         <div class="point" v-for="item in items" :key="item.title">
@@ -84,7 +84,7 @@ const items = [
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #D13C30;
+  color: var(--primary);
 }
 
 .point h3 {

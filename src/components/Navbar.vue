@@ -1,5 +1,5 @@
 <template>
-    <header class="navbar">
+    <header class="navbar" :class="{ hidden: isNavbarHidden }">
         <div class="navbar-inner">
             <RouterLink to="/" class="logo-link">
                 <img src="/images/logo.png" alt="Logo" class="logo" />
@@ -22,25 +22,18 @@
                             langState.t.main.navbar.about }}</RouterLink>
                     </li>
                     <li>
-                        <RouterLink to="/uslugi" class="nav-item" :class="{ active: route.path === '/services' }">{{
+                        <RouterLink to="/uslugi" class="nav-item" :class="{ active: route.path === '/uslugi' }">{{
                             langState.t.main.navbar.services }}</RouterLink>
                     </li>
                     <li>
-                        <RouterLink to="/projects" class="nav-item" :class="{ active: route.path === '/projects' }">{{
-                            langState.t.main.navbar.projects }}</RouterLink>
-                    </li>
-                    <li>
-                         <RouterLink to="/kontakt" class="nav-item" :class="{ active: route.path === '/kontakt' }">{{
+                        <RouterLink to="/kontakt" class="nav-item" :class="{ active: route.path === '/kontakt' }">{{
                             langState.t.main.navbar.contact }}</RouterLink>
                     </li>
-                  
-                       
-                        <button class="lang-toggle" @click="toggleLang">
-                            <Globe class="icon" />
-                            {{ langState.lang.toUpperCase() }}
-                        </button>
-                  
 
+                    <button class="lang-toggle" @click="toggleLang">
+                        <Globe class="icon" />
+                        {{ langState.lang.toUpperCase() }}
+                    </button>
                 </ul>
             </transition>
         </div>
@@ -56,6 +49,9 @@ import { Globe } from 'lucide-vue-next'
 const route = useRoute()
 const isMenuOpen = ref(false)
 const isDesktop = ref(window.innerWidth > 1024)
+const isNavbarHidden = ref(false)
+
+let lastScroll = 0
 
 function toggleLang() {
     langState.lang = langState.lang === 'pl' ? 'en' : 'pl'
@@ -70,16 +66,35 @@ function handleResize() {
     if (isDesktop.value) isMenuOpen.value = false
 }
 
+function handleScroll() {
+    const currentScroll = window.pageYOffset
+
+    if (currentScroll <= 0) {
+        isNavbarHidden.value = false
+        return
+    }
+
+    if (currentScroll > lastScroll && currentScroll > 100) {
+        isNavbarHidden.value = true
+    } else if (currentScroll < lastScroll) {
+        isNavbarHidden.value = false
+    }
+
+    lastScroll = currentScroll
+}
+
 onMounted(() => {
     window.addEventListener('resize', handleResize)
+    window.addEventListener('scroll', handleScroll)
 })
+
 onUnmounted(() => {
     window.removeEventListener('resize', handleResize)
+    window.removeEventListener('scroll', handleScroll)
 })
 </script>
 
-<style scoped>
-/* Navbar */
+<style>
 .navbar {
     width: 100%;
     background: white;
@@ -88,6 +103,11 @@ onUnmounted(() => {
     top: 0;
     border-bottom: 2px solid var(--primary);
     z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.navbar.hidden {
+    transform: translateY(-100%);
 }
 
 .navbar-inner {
@@ -104,7 +124,6 @@ onUnmounted(() => {
     margin-left: 20px;
 }
 
-/* Hamburger */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -127,11 +146,11 @@ onUnmounted(() => {
     border-radius: 2px;
     transition: transform 0.3s ease, opacity 0.3s ease;
     transform-origin: center center;
-    margin: 4px auto;
+    margin: 3px auto;
 }
 
 .hamburger span.open:nth-child(1) {
-    transform: translateY(10px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
 }
 
 .hamburger span.open:nth-child(2) {
@@ -142,7 +161,6 @@ onUnmounted(() => {
     transform: translateY(-10px) rotate(-45deg);
 }
 
-/* Menu */
 .nav-menu {
     display: flex;
     flex-direction: column;
@@ -162,7 +180,7 @@ onUnmounted(() => {
 }
 
 .nav-item {
-    color: #1d1e2c;
+    color: var(--title);
     text-decoration: none;
     font-weight: 500;
     position: relative;
@@ -174,9 +192,9 @@ onUnmounted(() => {
     bottom: -6px;
     left: 0;
     width: 0%;
-    height: 2px;
-    background: #d13c30;
-    transition: width 0.3s;
+    height: 1px;
+    background: var(--primary);
+    transition: width 0.2s;
 }
 
 .nav-item:hover::after,
@@ -232,7 +250,6 @@ onUnmounted(() => {
     max-height: 0;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
     .hamburger {
         display: flex;

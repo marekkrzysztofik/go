@@ -9,8 +9,8 @@ export default {
   },
   heroTitle: 'Projektujemy Twój kolejny rozdział.',
   heroSubtitle: 'Global Offshore oferuje sprawdzone usługi morskie i offshore — od systemów hydraulicznych po wsparcie projektowe.',
-  heroButton: 'Zobacz projekty',
-  heroProcessTitle: 'Nasz proces',
+  heroButton: 'Zgłoś sprawę',
+  heroProcessTitle: 'Zobacz projekty', 
   statsSection: {
     title: 'Nasze liczby mówią same za siebie',
     subtitle: 'Ponad dekada doświadczenia i setki zrealizowanych projektów na całym świecie.',
@@ -106,6 +106,7 @@ export default {
   departmentsTitle: 'Działy',
   production: 'Produkcja',
   service: 'Serwis',
+  address: 'Adres',
   companyTitle: 'Informacje',
   about: {
     title: 'Kim jesteśmy',
