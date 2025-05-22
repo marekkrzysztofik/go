@@ -35,7 +35,7 @@ const route = useRoute()
     flex-wrap: wrap;
     background: white;
     border-radius: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 

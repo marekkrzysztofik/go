@@ -128,7 +128,7 @@ onMounted(async () => {
   padding: 2rem;
   border-radius: 12px;
   border-top: 4px solid #d63830;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
 
