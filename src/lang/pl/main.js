@@ -1,8 +1,8 @@
 export default {
   navbar: {
-    home: 'Strona główna',
     about: 'O nas',
     services: 'Usługi',
+    carrers: 'Kariera',
     contact: 'Kontakt',
     projects: 'Projekty',
 
@@ -10,7 +10,7 @@ export default {
   heroTitle: 'Projektujemy Twój kolejny rozdział.',
   heroSubtitle: 'Global Offshore oferuje sprawdzone usługi morskie i offshore — od systemów hydraulicznych po wsparcie projektowe.',
   heroButton: 'Zgłoś sprawę',
-  heroProcessTitle: 'Zobacz projekty', 
+  heroProcessTitle: 'Zobacz projekty',
   statsSection: {
     title: 'Nasze liczby mówią same za siebie',
     subtitle: 'Ponad dekada doświadczenia i setki zrealizowanych projektów na całym świecie.',
@@ -118,17 +118,86 @@ export default {
       'Zgodność z międzynarodowymi normami (DNV, ISO)'
     ],
     historyTitle: 'Nasza historia',
-  history: [
-    { year: '2018', event: 'Założenie firmy i rozpoczęcie działalności w Gdyni.' },
-    { year: '2020', event: 'Pierwsze międzynarodowe realizacje dla przemysłu offshore.' },
-    { year: '2023', event: 'Rozszerzenie usług o logistykę i automatyzację.' }
-  ],
+    history: [
+      { year: '2018', event: 'Założenie firmy i rozpoczęcie działalności w Gdyni.' },
+      { year: '2020', event: 'Pierwsze międzynarodowe realizacje dla przemysłu offshore.' },
+      { year: '2023', event: 'Rozszerzenie usług o logistykę i automatyzację.' }
+    ],
   },
   contactPage: {
-  title: 'Skontaktuj się z nami',
-  subtitle: 'Jesteśmy dostępni pod telefonem, mailem lub osobiście w naszej siedzibie.',
-  email: 'contact@globaloffshore.pl'
-}
+    title: 'Skontaktuj się z nami',
+    subtitle: 'Jesteśmy dostępni pod telefonem, mailem lub osobiście w naszej siedzibie.',
+    email: 'contact@globaloffshore.pl'
+  },
+
+  careers: {
+    sectionTitle: 'Oferty pracy',
+    apply: 'Aplikuj',
+    duties: 'Obowiązki:',
+    requirements: 'Wymagania:',
+    offer: 'Oferujemy:',
+    jobs: [
+      {
+        title: 'Inżynier Projektu',
+        icon: 'HardHat',
+        duties: [
+          'Interpretacja rysunków i specyfikacji (branża morska i offshore)',
+          'Weryfikacja projektów zgodnie z dokumentacją kontraktową',
+          'Wsparcie w przygotowaniu ofert i harmonogramów',
+          'Współpraca z podwykonawcami i firmami instalacyjnymi',
+          'Nadzór nad produkcją',
+          'Prace serwisowe i modyfikacyjne'
+        ],
+        requirements: [
+          'Umiejętność prowadzenia projektów',
+          'Min. 5 lat doświadczenia w branży morskiej/offshore',
+          'Gotowość do podróży (kraj i zagranica)',
+          'Gotowość do szybkich wyjazdów i pracy w weekendy'
+        ],
+        offer: [
+          'Umowa o pracę – pełny etat',
+          'Wynagrodzenie podstawowe + nadgodziny'
+        ]
+      },
+      {
+        title: 'Monter Hydrauliki',
+        icon: 'Wrench',
+        duties: ['Montaż i modyfikacja systemów hydraulicznych', 'Płukanie i testy ciśnieniowe'],
+        requirements: [
+          'Umiejętność czytania schematów hydraulicznych',
+          'Doświadczenie Walform / EO2 Form',
+          'Min. 5 lat doświadczenia w branży offshore',
+          'Gotowość do podróży (kraj i zagranica)',
+          'Gotowość do szybkich wyjazdów i pracy w weekendy'
+        ],
+        offer: ['Umowa o pracę – pełny etat', 'Wynagrodzenie podstawowe + nadgodziny']
+      },
+      {
+        title: 'Monter Instalacji Elektrycznych',
+        icon: 'Zap',
+        duties: ['Montaż, budowa i modyfikacja instalacji elektrycznych'],
+        requirements: [
+          'Umiejętność czytania schematów elektrycznych',
+          'Min. 5 lat doświadczenia w branży offshore',
+          'Gotowość do podróży (kraj i zagranica)',
+          'Gotowość do szybkich wyjazdów i pracy w weekendy'
+        ],
+        offer: ['Umowa o pracę – pełny etat', 'Wynagrodzenie podstawowe + nadgodziny']
+      },
+      {
+        title: 'Monter Mechaniczny',
+        icon: 'Settings',
+        duties: ['Montaż i modyfikacja systemów mechanicznych'],
+        requirements: [
+          'Umiejętność czytania rysunku technicznego',
+          'Min. 5 lat doświadczenia w branży offshore',
+          'Gotowość do podróży (kraj i zagranica)',
+          'Gotowość do szybkich wyjazdów i pracy w weekendy'
+        ],
+        offer: ['Umowa o pracę – pełny etat', 'Wynagrodzenie podstawowe + nadgodziny']
+      }
+    ]
+  }
 
 
 

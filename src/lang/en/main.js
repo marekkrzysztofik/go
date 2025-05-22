@@ -1,8 +1,8 @@
 export default {
   navbar: {
-    home: 'Home',
     about: 'About us',
     services: 'Services',
+    carrers: 'Carrers',
     contact: 'Contact',
     projects: 'Projects',
   },
@@ -126,5 +126,92 @@ export default {
     title: 'Get in touch with us',
     subtitle: 'You can reach us by phone, email, or visit our office.',
     email: 'contact@globaloffshore.pl'
-  }
+  },
+
+  careers: {
+    sectionTitle: 'Career Opportunities',
+    apply: 'Apply',
+    duties: 'Responsibilities:',
+    requirements: 'Requirements:',
+    offer: 'We offer:',
+    jobs: [
+      {
+        title: 'Project Engineer',
+        icon: 'HardHat',
+        duties: [
+          'Interpretation of drawings and specifications (marine and offshore industry)',
+          'Review of engineering designs to ensure compliance with contract documentation',
+          'Support in preparing quotations and project schedules',
+          'Cooperation with subcontractors and installation companies',
+          'Production follow-up',
+          'Service and modification tasks'
+        ],
+        requirements: [
+          'Ability to lead projects',
+          'Minimum 5 years of experience in the marine/offshore industry',
+          'Willingness to travel domestically and internationally',
+          'Availability for short-notice trips and weekend work'
+        ],
+        offer: [
+          'Full-time employment contract',
+          'Base salary + overtime pay'
+        ]
+      },
+      {
+        title: 'Hydraulic Fitter',
+        icon: 'Wrench',
+        duties: [
+          'Assembly and modification of hydraulic systems',
+          'Flushing and pressure testing'
+        ],
+        requirements: [
+          'Ability to read hydraulic drawings and schematics',
+          'Experience with Walform / EO2 Form',
+          'Minimum 5 years of experience in the offshore industry',
+          'Willingness to travel domestically and internationally',
+          'Availability for short-notice trips and weekend work'
+        ],
+        offer: [
+          'Full-time employment contract',
+          'Base salary + overtime pay'
+        ]
+      },
+      {
+        title: 'Electrical Fitter',
+        icon: 'Zap',
+        duties: [
+          'Assembly, installation, and modification of electrical systems'
+        ],
+        requirements: [
+          'Ability to read electrical drawings and schematics',
+          'Minimum 5 years of experience in the offshore industry',
+          'Willingness to travel domestically and internationally',
+          'Availability for short-notice trips and weekend work'
+        ],
+        offer: [
+          'Full-time employment contract',
+          'Base salary + overtime pay'
+        ]
+      },
+      {
+        title: 'Mechanical Fitter',
+        icon: 'Settings',
+        duties: [
+          'Assembly and modification of mechanical systems'
+        ],
+        requirements: [
+          'Ability to read technical/mechanical drawings',
+          'Minimum 5 years of experience in the offshore industry',
+          'Willingness to travel domestically and internationally',
+          'Availability for short-notice trips and weekend work'
+        ],
+        offer: [
+          'Full-time employment contract',
+          'Base salary + overtime pay'
+        ]
+      }
+    ]
+  },
 }
+
+

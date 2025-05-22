@@ -14,12 +14,13 @@
             <transition name="slide-fade">
                 <ul v-show="isMenuOpen || isDesktop" class="nav-menu" :class="{ desktop: isDesktop }">
                     <li>
-                        <RouterLink to="/" class="nav-item" :class="{ active: route.path === '/' }">{{
-                            langState.t.main.navbar.home }}</RouterLink>
-                    </li>
-                    <li>
                         <RouterLink to="/about" class="nav-item" :class="{ active: route.path === '/about' }">{{
                             langState.t.main.navbar.about }}</RouterLink>
+                    </li>
+                    <li>
+                        <RouterLink to="/kariera" class="nav-item" :class="{ active: route.path === '/kariera' }">
+                            {{
+                                langState.t.main.navbar.carrers }}</RouterLink>
                     </li>
                     <li>
                         <RouterLink to="/uslugi" class="nav-item" :class="{ active: route.path === '/uslugi' }">{{
