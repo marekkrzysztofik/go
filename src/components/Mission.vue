@@ -1,101 +1,82 @@
 <template>
-  <section class="mission">
-    <div class="mission-wrapper">
-      <img src="/images/1.jpg" alt="Mission visual" class="mission-image" />
-
-      <div class="mission-points">
-        <div class="point" v-for="item in items" :key="item.title">
-          <div class="icon-box">
-            <component :is="item.icon" size="28" stroke-width="2" />
-          </div>
-          <div>
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.text }}</p>
-          </div>
+  <!-- Misja i wartości -->
+  <div class="mission-section fade-in">
+    <h2 class="section-title">{{ langState.t.main.missionTitle }}</h2>
+    <div class="mission-cards">
+      <div class="mission-card" v-for="item in langState.t.main.missionPoints" :key="item.title">
+        <div class="icon-wrapper">
+          <component :is="iconMap[item.icon]" size="28" stroke-width="2" />
         </div>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
       </div>
     </div>
-  </section>
+  </div>
+
 </template>
 
 <script setup>
 import { CheckSquare, Loader, Handshake } from 'lucide-vue-next'
+import langState from '@/lang/langState'
 
-const items = [
-  {
-    title: 'Quality Assurance',
-    text: 'Our main goal is to provide our Customer with the highest quality of service. Experienced team, know-how, reliable suppliers.',
-    icon: CheckSquare,
-  },
-  {
-    title: 'Flexibility',
-    text: 'We ensure timely completion and quick team mobilization. We adapt to project needs and deliver fast solutions.',
-    icon: Loader,
-  },
-  {
-    title: 'Customer Satisfaction',
-    text: 'We focus on long-term client relationships through efficiency, competitive pricing and professional branding.',
-    icon: Handshake,
-  },
-]
+const iconMap = {
+  CheckSquare,
+  Loader,
+  Handshake,
+}
 </script>
 
 <style scoped>
-.mission {
-  background: #f9f9f9;
-  padding: 4rem 2rem;
+.mission-section {
+  max-width: 1200px;
+  margin: 80px auto 0;
+  padding: 0 20px;
+}
+.section-title {
+  font-size: 2rem;
+  color: #d63830;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.mission-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-.mission-wrapper {
-  display: flex;
-  max-width: 1280px;
-  margin: 0 auto;
-  gap: 3rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.mission-image {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 16px;
-  object-fit: cover;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-}
-
-.mission-points {
-  flex: 1;
+.mission-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  align-items: center;
+  text-align: center;
 }
 
-.point {
-  display: flex;
-  gap: 1.5rem;
-  align-items: flex-start;
-}
-
-.icon-box {
-  min-width: 60px;
-  height: 60px;
-  background: rgba(209, 60, 48, 0.1);
+.icon-wrapper {
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
+  background: rgba(209, 60, 48, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary);
+  color: #d63830;
+  margin-bottom: 1rem;
 }
 
-.point h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.25rem;
+.mission-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
   color: #1D1E2C;
 }
 
-.point p {
-  margin: 0;
+.mission-card p {
   color: #555;
+  font-size: 0.95rem;
   line-height: 1.6;
 }
 </style>

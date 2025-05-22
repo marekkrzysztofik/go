@@ -212,6 +212,24 @@ export default {
       }
     ]
   },
+  missionTitle: 'What We Stand For',
+  missionPoints: [
+    {
+      title: 'Quality Assurance',
+      text: 'Our main goal is to provide our Customer with the highest quality of service. Experienced team, know-how, reliable suppliers.',
+      icon: 'CheckSquare',
+    },
+    {
+      title: 'Flexibility',
+      text: 'We ensure timely completion and quick team mobilization. We adapt to project needs and deliver fast solutions.',
+      icon: 'Loader',
+    },
+    {
+      title: 'Customer Satisfaction',
+      text: 'We focus on long-term client relationships through efficiency, competitive pricing and professional branding.',
+      icon: 'Handshake',
+    },
+  ],
 }
 
 

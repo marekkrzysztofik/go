@@ -197,7 +197,25 @@ export default {
         offer: ['Umowa o pracę – pełny etat', 'Wynagrodzenie podstawowe + nadgodziny']
       }
     ]
-  }
+  },
+  missionTitle: 'Nasze wartości',
+  missionPoints: [
+    {
+      title: 'Gwarancja Jakości',
+      text: 'Naszym głównym celem jest zapewnienie najwyższej jakości usług. Doświadczony zespół, know-how, sprawdzeni dostawcy.',
+      icon: 'CheckSquare',
+    },
+    {
+      title: 'Elastyczność',
+      text: 'Zapewniamy terminową realizację i szybką mobilizację zespołu. Dostosowujemy się do potrzeb projektów i dostarczamy szybkie rozwiązania.',
+      icon: 'Loader',
+    },
+    {
+      title: 'Satysfakcja Klienta',
+      text: 'Stawiamy na długofalowe relacje z klientami dzięki efektywności, konkurencyjnym cenom i profesjonalnej obsłudze.',
+      icon: 'Handshake',
+    },
+  ]
 
 
 
