@@ -9,6 +9,8 @@
                     <component :is="iconComponents[job.icon]" class="job-icon" />
                     <h3>{{ job.title }}</h3>
                 </div>
+                <RouterLink to="/aplikuj" class="apply-button">{{ langState.t.main.careers.apply
+                    }}</RouterLink>
             </div>
 
             <!-- Prawa kolumna: opis stanowiska -->
@@ -27,7 +29,6 @@
                         <ul>
                             <li v-for="offer in selectedJob.offer" :key="offer">{{ offer }}</li>
                         </ul>
-                        <button class="apply-button">{{ langState.t.main.careers.apply }}</button>
                     </div>
 
                 </div>
@@ -130,13 +131,22 @@ const selectedJob = computed(() => jobs.value[selectedIndex.value])
 }
 
 .apply-button {
-    background-color: #d63830;
-    color: #fff;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    background-color: var(--primary);
+    text-align: center;
     cursor: pointer;
-    margin-top: 1rem;
+    border: none;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.apply-button:hover {
+    background-color: #a7281f;
 }
 
 .fade-slide-enter-active,

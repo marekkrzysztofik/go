@@ -22,6 +22,10 @@ body {
   color: #000;
 }
 
+button {
+  font-family: "Poppins", sans-serif;
+}
+
 .flex {
   display: flex;
 }

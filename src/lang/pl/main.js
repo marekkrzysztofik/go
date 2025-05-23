@@ -215,7 +215,54 @@ export default {
       text: 'Stawiamy na długofalowe relacje z klientami dzięki efektywności, konkurencyjnym cenom i profesjonalnej obsłudze.',
       icon: 'Handshake',
     },
-  ]
+  ],
+  reportForm: {
+    title: 'Nowe zgłoszenie',
+    name: 'Imię i nazwisko',
+    email: 'Adres e-mail',
+    phone: 'Numer telefonu',
+    photos: 'Dodaj zdjęcia (max 3)',
+    typeLabel: 'Typ sprawy',
+    typeOptions: {
+      default: 'Wybierz...',
+      failure: 'Awaria',
+      order: 'Zamówienie',
+      question: 'Pytanie'
+    },
+    priorityLabel: 'Priorytet',
+    priorityOptions: {
+      default: 'Wybierz...',
+      normal: 'Normalny',
+      urgent: 'Pilny'
+    },
+    message: 'Opis sprawy',
+    messagePlaceholder: 'Opisz problem lub pytanie...',
+    submit: 'Wyślij zgłoszenie',
+    uploading: 'Wysyłanie zdjęć...',
+    success: 'Formularz przesłany pomyślnie.',
+    error: 'Coś poszło nie tak. Spróbuj ponownie później.'
+  },
+  applicationForm: {
+    title: 'Nowa aplikacja',
+    name: 'Imię i nazwisko',
+    email: 'Adres e-mail',
+    phone: 'Numer telefonu',
+    cv: 'Dodaj CV (PDF, max 1 plik)',
+    positionLabel: 'Wybrane stanowisko',
+    positionOptions: {
+      default: 'Wybierz...',
+      engineer: 'Inżynier Projektu',
+      hydraulic: 'Monter Hydrauliki',
+      electrical: 'Monter Instalacji Elektrycznych',
+      mechanic: 'Monter Mechaniczny'
+    },
+    message: 'Wiadomość (opcjonalnie)',
+    messagePlaceholder: 'Dodaj krótką wiadomość, jeśli chcesz...',
+    submit: 'Wyślij aplikację',
+    uploading: 'Wysyłanie CV...',
+    success: 'Aplikacja przesłana pomyślnie.',
+    error: 'Coś poszło nie tak. Spróbuj ponownie później.'
+  }
 
 
 

@@ -46,7 +46,6 @@
     <div class="footer-bottom">
       <p>&copy; {{ new Date().getFullYear() }} GLOBAL Offshore</p>
       <div class="footer-links">
-        <RouterLink to="/privacy-policy">Polityka prywatności</RouterLink>
         <RouterLink to="/cookies">Polityka cookies</RouterLink>
       </div>
     </div>

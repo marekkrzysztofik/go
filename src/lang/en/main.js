@@ -230,6 +230,53 @@ export default {
       icon: 'Handshake',
     },
   ],
+  reportForm: {
+    title: 'New report',
+    name: 'Full name',
+    email: 'Email address',
+    phone: 'Phone number',
+    photos: 'Add photos (max 3)',
+    typeLabel: 'Selected issue type',
+    typeOptions: {
+      default: 'Select...',
+      failure: 'Failure',
+      order: 'Order',
+      question: 'Question'
+    },
+    priorityLabel: 'Priority',
+    priorityOptions: {
+      default: 'Select...',
+      normal: 'Normal',
+      urgent: 'Urgent'
+    },
+    message: 'Issue description',
+    messagePlaceholder: 'Describe the problem or question...',
+    submit: 'Submit report',
+    uploading: 'Uploading photos...',
+    success: 'Form submitted successfully.',
+    error: 'Something went wrong. Please try again later.'
+  },
+  applicationForm: {
+    title: 'New application',
+    name: 'Full name',
+    email: 'Email address',
+    phone: 'Phone number',
+    cv: 'Upload CV (PDF, max 1 file)',
+    positionLabel: 'Selected position',
+    positionOptions: {
+      default: 'Select...',
+      engineer: 'Project Engineer',
+      hydraulic: 'Hydraulic Fitter',
+      electrical: 'Electrical Installation Fitter',
+      mechanic: 'Mechanical Fitter'
+    },
+    message: 'Message (optional)',
+    messagePlaceholder: 'Add a short message if you wish...',
+    submit: 'Submit application',
+    uploading: 'Uploading CV...',
+    success: 'Application submitted successfully.',
+    error: 'Something went wrong. Please try again later.'
+  }
 }
 
 

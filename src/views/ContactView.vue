@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="map-column">
-        <iframe class="map-frame"
+        <iframe v-if="cookiesAccepted" class="map-frame"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2332.2992398628817!2d18.538839316075887!3d54.55105700385359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fd7332b10e9f91%3A0xa546364763bb6c2a!2sHutnicza%2012%2C%2081-061%20Gdynia!5e0!3m2!1spl!2spl!4v1683192302859!5m2!1spl!2spl"
           allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
@@ -46,6 +46,8 @@
 <script setup>
 import langState from '@/lang/langState'
 import { MapPin, Mail, Phone } from 'lucide-vue-next'
+
+const cookiesAccepted = localStorage.getItem('cookies_choice') === 'accepted'
 </script>
 
 <style scoped>

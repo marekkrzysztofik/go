@@ -1,71 +1,63 @@
 <template>
   <section class="report-form-section">
-    <h2 class="title">{{ langState.t.main.reportForm.title }}</h2>
+    <h2 class="title">{{ langState.t.main.applicationForm.title }}</h2>
 
     <form @submit.prevent="submitForm">
       <div class="form-grid">
         <!-- Lewa kolumna -->
         <div class="form-left">
           <label>
-            {{ langState.t.main.reportForm.name }}:
+            {{ langState.t.main.applicationForm.name }}:
             <input type="text" v-model="form.name" required />
           </label>
 
           <label>
-            {{ langState.t.main.reportForm.email }}:
+            {{ langState.t.main.applicationForm.email }}:
             <input type="email" v-model="form.email" required />
           </label>
 
           <label>
-            {{ langState.t.main.reportForm.phone }}:
+            {{ langState.t.main.applicationForm.phone }}:
             <input type="tel" v-model="form.phone" required />
           </label>
 
           <label>
-            {{ langState.t.main.reportForm.photos }}:
-            <input type="file" accept="image/*" multiple @change="handleImageUpload" />
+            {{ langState.t.main.applicationForm.cv }}:
+            <input type="file" accept=".pdf" @change="handleCvUpload" />
           </label>
         </div>
 
         <!-- Prawa kolumna -->
         <div class="form-right">
           <label>
-            {{ langState.t.main.reportForm.typeLabel }}:
-            <select v-model="form.type" required>
-              <option disabled value="">{{ langState.t.main.reportForm.typeOptions.default }}</option>
-              <option value="Awaria">{{ langState.t.main.reportForm.typeOptions.failure }}</option>
-              <option value="Zamówienie">{{ langState.t.main.reportForm.typeOptions.order }}</option>
-              <option value="Pytanie">{{ langState.t.main.reportForm.typeOptions.question }}</option>
+            {{ langState.t.main.applicationForm.positionLabel }}:
+            <select v-model="form.position" required>
+              <option disabled value="">{{ langState.t.main.applicationForm.positionOptions.default }}</option>
+              <option value="Inżynier Projektu">{{ langState.t.main.applicationForm.positionOptions.engineer }}</option>
+              <option value="Monter Hydrauliki">{{ langState.t.main.applicationForm.positionOptions.hydraulic }}</option>
+              <option value="Monter Instalacji Elektrycznych">{{ langState.t.main.applicationForm.positionOptions.electrical }}</option>
+              <option value="Monter Mechaniczny">{{ langState.t.main.applicationForm.positionOptions.mechanic }}</option>
             </select>
           </label>
 
           <label>
-            {{ langState.t.main.reportForm.priorityLabel }}:
-            <select v-model="form.priority" required>
-              <option disabled value="">{{ langState.t.main.reportForm.priorityOptions.default }}</option>
-              <option value="Normalny">{{ langState.t.main.reportForm.priorityOptions.normal }}</option>
-              <option value="Pilny">{{ langState.t.main.reportForm.priorityOptions.urgent }}</option>
-            </select>
-          </label>
-
-          <label>
-            {{ langState.t.main.reportForm.message }}:
+            {{ langState.t.main.applicationForm.message }}:
             <textarea
               v-model="form.message"
-              required
-              rows="8"
-              :placeholder="langState.t.main.reportForm.messagePlaceholder"
+              rows="6"
+              :placeholder="langState.t.main.applicationForm.messagePlaceholder"
             ></textarea>
           </label>
         </div>
       </div>
 
       <button type="submit" class="submit-btn" :disabled="isUploading">
-        {{ isUploading ? langState.t.main.reportForm.uploading : langState.t.main.reportForm.submit }}
+        {{ isUploading ? langState.t.main.applicationForm.uploading : langState.t.main.applicationForm.submit }}
       </button>
     </form>
   </section>
 </template>
+
 
 
 <script setup>
@@ -78,37 +70,33 @@ const form = ref({
   name: '',
   email: '',
   phone: '',
-  type: '',
-  priority: '',
+  position: '',
   message: ''
 })
 
-const uploadedLinks = ref([])
+const uploadedCvLink = ref('')
 const isUploading = ref(false)
 
-const handleImageUpload = async (e) => {
-  const files = Array.from(e.target.files).slice(0, 3)
-  uploadedLinks.value = []
+const handleCvUpload = async (e) => {
+  const file = e.target.files[0]
+  if (!file || file.type !== 'application/pdf') return
+
   isUploading.value = true
+  const formData = new FormData()
+  formData.append('file', file)
+  formData.append('upload_preset', UPLOAD_PRESET)
 
-  for (const file of files) {
-    const formData = new FormData()
-    formData.append('file', file)
-    formData.append('upload_preset', UPLOAD_PRESET)
-
-    try {
-      const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
-        method: 'POST',
-        body: formData
-      })
-
-      const data = await res.json()
-      if (data.secure_url) {
-        uploadedLinks.value.push(data.secure_url)
-      }
-    } catch (error) {
-      console.error('Błąd uploadu:', error)
+  try {
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/upload`, {
+      method: 'POST',
+      body: formData
+    })
+    const data = await res.json()
+    if (data.secure_url) {
+      uploadedCvLink.value = data.secure_url
     }
+  } catch (error) {
+    console.error('Błąd uploadu CV:', error)
   }
 
   isUploading.value = false
@@ -119,7 +107,7 @@ const submitForm = async () => {
 
   const payload = {
     ...form.value,
-    attachments: uploadedLinks.value
+    cv: uploadedCvLink.value
   }
 
   const response = await fetch(url, {
@@ -132,19 +120,18 @@ const submitForm = async () => {
   })
 
   if (response.ok) {
-    alert(langState.t.main.reportForm.success)
+    alert(langState.t.main.applicationForm.success)
     form.value = {
-      name: '',
+       name: '',
       email: '',
       phone: '',
-      type: '',
-      priority: '',
+      position: '',
       message: ''
     }
-    uploadedLinks.value = []
+    uploadedCvLink.value = ''
 
   } else {
-    alert(langState.t.main.reportForm.error)
+    alert(langState.t.main.applicationForm.error)
   }
 }
 </script>

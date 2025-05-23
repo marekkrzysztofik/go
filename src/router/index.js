@@ -4,6 +4,8 @@ import ContactView from '@/views/ContactView.vue'
 import Services3 from '@/components/Services3.vue'
 import FormView from '@/views/FormView.vue'
 import CarrerView from '@/views/CarrerView.vue'
+import CookieInfo from '@/views/CookieInfo.vue'
+import CarrerForm from '@/views/CarrerForm.vue'
 
 const routes = [
   {
@@ -26,10 +28,20 @@ const routes = [
     name: 'form',
     component: FormView,
   },
+  {
+    path: '/aplikuj',
+    name: 'carrerfrom',
+    component: CarrerForm,
+  },
    {
     path: '/kariera',
     name: 'kariera',
     component: CarrerView,
+  },
+  {
+    path: '/cookies',
+    name: 'cookies',
+    component: CookieInfo,
   },
   {
     path: '/about',
