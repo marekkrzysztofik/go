@@ -1,45 +1,51 @@
 <template>
   <footer class="footer">
     <div class="footer-container">
-      <!-- Logo i opis -->
-      <div class="footer-section logo">
-        <img src="/images/logo.png" alt="Global Offshore" class="footer-logo" />
-        <p class="footer-description">
-          {{ langState.t.main.footerAbout || 'Global Offshore – kompleksowe wsparcie projektów offshore na całym świecie.' }}
-        </p>
-      </div>
-
-      <!-- Kontakt -->
       <div class="footer-section">
-        <h4>{{ langState.t.main.contactTitle }}</h4>
-        <p>
-          <MapPin class="icon" /> Hutnicza 12<br />
-          81-061 Gdynia, Poland
-        </p>
-        <p>
-          <Mail class="icon" />
-          <a href="mailto:contact@globaloffshore.pl">contact@globaloffshore.pl</a>
-        </p>
-      </div>
+        <div class="map-column">
+          <iframe class="map-frame"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2314.3609802263877!2d18.476735476360208!3d54.54476178438526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fda69bf55d3751%3A0x33107e8d0c815bcf!2sHutnicza%2012%2C%2081-061%20Gdynia!5e0!3m2!1spl!2spl!4v1748006537689!5m2!1spl!2spl"
+            height="200" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
 
-      <!-- Działy -->
-      <div class="footer-section">
-        <h4>{{ langState.t.main.departmentsTitle }}</h4>
-        <p><Phone class="icon" /> <strong>{{ langState.t.main.production }}:</strong><br />+48 888 293 024</p>
-        <p><Phone class="icon" /> <strong>{{ langState.t.main.service }}:</strong><br />+48 602 113 006</p>
       </div>
-
-      <!-- Firma -->
       <div class="footer-section">
         <h4>{{ langState.t.main.companyTitle }}</h4>
-        <p>
-          <Building class="icon" /> GLOBAL Offshore Sp. z o.o.<br />
-          Czechosłowacka 3, 81-336 Gdynia<br />
-          NIP: 958-169-10-96<br />
-          REGON: 380012684<br />
-          KRS: 0000728367
-        </p>
+        <div>
+          <p>GLOBAL Offshore Sp. z o.o.</p>
+          <p> NIP: 958-169-10-9</p>
+          <p>REGON: 380012684</p>
+          <p>KRS: 0000728367</p>
+        </div>
+
       </div>
+
+      <div class="footer-section">
+        <h4>{{ langState.t.main.contactTitle }}</h4>
+        <div>
+          <p>
+            <MapPin class="icon" /> Hutnicza 12
+            81-061 Gdynia, Poland
+          </p>
+          <p>
+            <Mail class="icon" />
+            contact@globaloffshore.pl
+          </p>
+          <p>
+            <Phone class="icon" />+48 888 293 024
+          </p>
+          <p>
+            <Phone class="icon" />+48 602 113 006
+          </p>
+        </div>
+
+      </div>
+      <div class="footer-section">
+        <img src="/images/logo.png" alt="Global Offshore" class="footer-logo" />
+        <p class="center">Global Offshore – kompleksowe wsparcie projektów offshore na całym świecie.</p>
+      </div>
+
     </div>
 
     <!-- Dolna część -->
@@ -56,6 +62,7 @@
 import langState from '@/lang/langState'
 import { Mail, Phone, MapPin, Building } from 'lucide-vue-next'
 import { RouterLink } from 'vue-router'
+const cookiesAccepted = localStorage.getItem('cookies_choice') === 'accepted'
 </script>
 
 <style scoped>
@@ -70,9 +77,8 @@ import { RouterLink } from 'vue-router'
 
 .footer-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-  max-width: 1100px;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 90%;
   margin: 0 auto;
 }
 
@@ -80,6 +86,17 @@ import { RouterLink } from 'vue-router'
   margin-bottom: 0.75rem;
   font-size: 1.1rem;
   color: #d63830;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  text-align: center;
 }
 
 .footer-section p {
@@ -97,7 +114,7 @@ import { RouterLink } from 'vue-router'
 }
 
 .footer-logo {
-  width: 160px;
+  width: 200px;
   margin-bottom: 1rem;
 }
 
@@ -140,5 +157,29 @@ import { RouterLink } from 'vue-router'
 
 .footer-links a:hover {
   text-decoration: underline;
+}
+
+.map-column {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.map-frame {
+  width: 100%;
+  min-height: 100%;
+  border: none;
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .footer-section {
+    margin-bottom: 2rem;
+  }
 }
 </style>
