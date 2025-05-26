@@ -5,14 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+      "build": "vite build",
     "preview": "vite preview",
     "format": "prettier --write src/"
   },
   "dependencies": {
     "@amcharts/amcharts5": "^5.12.2",
     "@amcharts/amcharts5-geodata": "^5.1.4",
+    "@vueuse/head": "^2.0.0",
     "lucide-vue-next": "^0.509.0",
+    "vite-ssg": "^27.0.1",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },

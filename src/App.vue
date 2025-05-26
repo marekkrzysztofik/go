@@ -2,6 +2,13 @@
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import CookieBaner from '@/components/CookieBaner.vue'
+import { watch } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+watch(() => route.fullPath, () => {
+  window.scrollTo({ top: 0 })
+})
 </script>
 
 <template>

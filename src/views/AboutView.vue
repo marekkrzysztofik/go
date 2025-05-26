@@ -42,7 +42,6 @@ import Mission from '@/components/Mission.vue'
 <style scoped>
 .about-section {
   padding: 80px 20px;
-  background-color: #f9f9f9;
 }
 
 .section-title {

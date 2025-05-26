@@ -2,7 +2,7 @@
 
 :root {
   --primary: #D13C30;
-  --redtitle: #D13C30;
+  --redtitle: #1a1a1a;
   --title: #1a1a1a;
   --subtitle: #666666;
   --black: #3A3335;
@@ -36,6 +36,12 @@ button {
 
 .app {
   margin: 0;
+  background: linear-gradient(to right,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(0, 0, 0, 0.05) 5%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, 0.05) 95%,
+      rgba(0, 0, 0, 0.15) 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;

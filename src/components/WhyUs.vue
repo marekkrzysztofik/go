@@ -4,21 +4,9 @@
     <p class="section-subtitle">{{ langState.t.main.statsSection.subtitle }}</p>
 
     <div class="stats-grid">
-      <div
-        v-for="(stat, index) in stats"
-        :key="index"
-        class="stat-box"
-        :data-index="index"
-      >
-        <component
-          :is="stat.icon"
-          class="icon"
-          :class="{ drawn: drawnIcons.includes(index) }"
-        />
-        <div
-          class="value"
-          :class="{ bounce: bouncingValues.includes(index) }"
-        >
+      <div v-for="(stat, index) in stats" :key="index" class="stat-box" :data-index="index">
+        <component :is="stat.icon" class="icon" :class="{ drawn: drawnIcons.includes(index) }" />
+        <div class="value" :class="{ bounce: bouncingValues.includes(index) }">
           {{ animatedValues[index] }}{{ stat.suffix }}
         </div>
         <div class="label">{{ stat.label }}</div>
@@ -97,7 +85,7 @@ onMounted(async () => {
 
 <style scoped>
 .stats-section {
-  width: 80vw;
+  width: 90vw;
   padding: 4rem 2rem;
   text-align: center;
 }
@@ -116,6 +104,7 @@ onMounted(async () => {
 }
 
 .stats-grid {
+  width: 80vw;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
@@ -152,9 +141,11 @@ onMounted(async () => {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.2);
   }
+
   100% {
     transform: scale(1);
   }

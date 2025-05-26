@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createMemoryHistory  } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import ContactView from '@/views/ContactView.vue'
 import Services3 from '@/components/Services3.vue'
@@ -6,8 +6,7 @@ import FormView from '@/views/FormView.vue'
 import CarrerView from '@/views/CarrerView.vue'
 import CookieInfo from '@/views/CookieInfo.vue'
 import CarrerForm from '@/views/CarrerForm.vue'
-
-const routes = [
+export const routes = [
   {
     path: '/',
     name: 'home',
@@ -33,7 +32,7 @@ const routes = [
     name: 'carrerfrom',
     component: CarrerForm,
   },
-   {
+  {
     path: '/kariera',
     name: 'kariera',
     component: CarrerView,
@@ -52,18 +51,13 @@ const routes = [
     component: () => import('../views/AboutView.vue'),
   },
 ]
+const isClient = typeof window !== 'undefined' // ✅ działa w każdej wersji
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
-  scrollBehavior(to) {
-    if (to.hash) {
-      return {
-        el: to.hash,
-        behavior: 'smooth'
-      }
+    history: isClient ? createWebHistory() : createMemoryHistory(),
+    routes,
+    scrollBehavior() {
+      return { top: 0 }
     }
-    return { top: 0 }
-  }
-})
-export default router
+  })
+export default router;

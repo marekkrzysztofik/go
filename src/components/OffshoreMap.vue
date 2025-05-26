@@ -46,6 +46,7 @@ const projects = [
 ];
 
 onMounted(() => {
+  if (import.meta.env.SSR) return 
   root = am5.Root.new("chartdiv");
   root.setThemes([am5themes_Animated.new(root)]);
 
@@ -70,9 +71,9 @@ onMounted(() => {
   polygonSeries.mapPolygons.template.setAll({
     tooltipText: "{name}",
     interactive: true,
-    fill: am5.color("#e0e0e0"),
-    stroke: am5.color("#999"),
-    strokeWidth: 0.3
+    fill: am5.color("#F2F2F2"),
+    stroke: am5.color("#D84040"),
+    strokeWidth: 0.5
   });
 
   polygonSeries.mapPolygons.template.states.create("hover", {
@@ -111,7 +112,6 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .map-section {
-  background-color: #ffffff;
   color: var(--title);
   padding: 4rem 2rem;
   text-align: center;
@@ -138,7 +138,6 @@ onBeforeUnmount(() => {
   height: 600px;
   border-radius: 16px;
   margin: 0 auto;
-  background-color: #ffffff;
 }
 
 .cta-wrapper {

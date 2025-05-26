@@ -2,7 +2,7 @@ import { reactive, computed, watch } from 'vue'
 import { translations } from './translations.js'
 
 const langState = reactive({
-  lang: localStorage.getItem('lang') || 'pl',
+  lang: typeof window !== 'undefined' ? localStorage.getItem("lang") || "pl" : "pl",
   get t() {
     return translations[this.lang]
   }

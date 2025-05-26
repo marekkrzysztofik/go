@@ -8,7 +8,6 @@
                 </p>
                 <div class="hero-actions">
                     <RouterLink to="/zgloszenie" class="btn-primary"> {{ langState.t.main.heroButton }}</RouterLink>
-                   
                 </div>
             </div>
             <div class="hero-image">
@@ -33,11 +32,15 @@ const route = useRoute()
     align-items: center;
     margin: 2rem auto;
     flex-wrap: wrap;
-    background: white;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 30px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
+
+
 
 .hero-text {
     padding: 1rem 3rem;
@@ -52,7 +55,7 @@ const route = useRoute()
 
 .hero p {
     font-size: 1.1rem;
-    color:  var(--subtitle);
+    color: var(--subtitle);
     margin-bottom: 2rem;
 }
 
@@ -61,7 +64,7 @@ const route = useRoute()
     display: flex;
     justify-content: center;
     gap: 1rem;
-    
+
 }
 
 .btn-primary {

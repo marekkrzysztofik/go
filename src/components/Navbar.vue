@@ -12,10 +12,11 @@
             </button>
 
             <transition name="slide-fade">
-                <ul v-show="isMenuOpen || isDesktop" class="nav-menu" @click="toggleMenu" :class="{ desktop: isDesktop }">
+                <ul v-show="isMenuOpen || isDesktop" class="nav-menu" @click="toggleMenu"
+                    :class="{ desktop: isDesktop }">
                     <li>
-                        <RouterLink :to="{ path: '/', hash: '#services' }" class="nav-item" :class="{ active: route.path === '/uslugi' }">{{
-                            langState.t.main.navbar.services }}</RouterLink>
+                        <a href="#services" class="nav-item" @click.prevent="goToHash('#services')">{{
+                            langState.t.main.navbar.services }}</a>
                     </li>
                     <li>
                         <RouterLink to="/about" class="nav-item" :class="{ active: route.path === '/about' }">{{
@@ -42,18 +43,26 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import langState from '@/lang/langState'
 import { Globe } from 'lucide-vue-next'
 
 const route = useRoute()
+const router = useRouter()
 const isMenuOpen = ref(false)
 const isDesktop = ref(window.innerWidth > 1024)
 const isNavbarHidden = ref(false)
 
 let lastScroll = 0
-
+const goToHash = async (hash) => {
+  if (route.path === '/') {
+    const el = document.querySelector(hash)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  } else {
+    router.push({ path: '/', hash })
+  }
+}
 function toggleLang() {
     langState.lang = langState.lang === 'pl' ? 'en' : 'pl'
 }
@@ -84,7 +93,7 @@ function handleScroll() {
     lastScroll = currentScroll
 }
 
-onMounted(() => {
+onMounted(async () => {
     window.addEventListener('resize', handleResize)
     window.addEventListener('scroll', handleScroll)
 })
@@ -98,7 +107,7 @@ onUnmounted(() => {
 <style>
 .navbar {
     width: 100%;
-    background: white;
+    background: rgba(255, 255, 255, 1);
     padding: 1rem 2rem;
     position: sticky;
     top: 0;

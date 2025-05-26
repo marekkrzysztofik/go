@@ -86,7 +86,7 @@ onBeforeUnmount(() => {
 .our-offer {
   width: 90vw;
   padding: 4rem 2rem;
-  background-color: #fff;
+
   text-align: center;
   color: var(--title);
 }
