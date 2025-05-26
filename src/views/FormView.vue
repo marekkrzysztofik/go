@@ -153,7 +153,7 @@ const submitForm = async () => {
 .report-form-section {
   width: 100%;
   max-width: 1200px;
-  margin: 2rem auto 7rem auto;
+  margin: 2rem auto 10rem auto;
   padding: 2rem 3rem;
   background: #fff;
   color: var(--title);

@@ -17,20 +17,6 @@
       </div>
     </div>
     <Mission />
-    <div class="history-section">
-      <h2 class="section-title">{{ langState.t.main.about.historyTitle }}</h2>
-      <div class="timeline-flex">
-        <div v-for="(entry, index) in langState.t.main.about.history" :key="index" class="timeline-row">
-          <div class="timeline-left">
-            <div class="dot"></div>
-            <div class="year">{{ entry.year }}</div>
-          </div>
-          <div class="timeline-right">
-            <div class="event">{{ entry.event }}</div>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 </template>
 
@@ -42,6 +28,7 @@ import Mission from '@/components/Mission.vue'
 <style scoped>
 .about-section {
   padding: 80px 20px;
+  margin-bottom: 10rem;
 }
 
 .section-title {

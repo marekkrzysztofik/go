@@ -126,4 +126,39 @@ const route = useRoute()
         font-size: 1.1rem;
     }
 }
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-text {
+    padding: 1rem 3rem;
+    animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.hero-actions {
+    animation: slideInLeft 1s ease-out forwards;
+}
+
+.hero-image {
+    padding-right: 48px;
+    animation: slideInRight 0.8s ease-out forwards;
+}
 </style>

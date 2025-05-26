@@ -55,9 +55,6 @@
   </section>
 </template>
 
-<script setup>
-// Komponent statyczny – bez logiki JS
-</script>
 
 <style scoped>
 .privacy-section {

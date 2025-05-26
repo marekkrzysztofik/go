@@ -34,19 +34,19 @@
             <select v-model="form.position" required>
               <option disabled value="">{{ langState.t.main.applicationForm.positionOptions.default }}</option>
               <option value="Inżynier Projektu">{{ langState.t.main.applicationForm.positionOptions.engineer }}</option>
-              <option value="Monter Hydrauliki">{{ langState.t.main.applicationForm.positionOptions.hydraulic }}</option>
-              <option value="Monter Instalacji Elektrycznych">{{ langState.t.main.applicationForm.positionOptions.electrical }}</option>
-              <option value="Monter Mechaniczny">{{ langState.t.main.applicationForm.positionOptions.mechanic }}</option>
+              <option value="Monter Hydrauliki">{{ langState.t.main.applicationForm.positionOptions.hydraulic }}
+              </option>
+              <option value="Monter Instalacji Elektrycznych">{{
+                langState.t.main.applicationForm.positionOptions.electrical }}</option>
+              <option value="Monter Mechaniczny">{{ langState.t.main.applicationForm.positionOptions.mechanic }}
+              </option>
             </select>
           </label>
 
           <label>
             {{ langState.t.main.applicationForm.message }}:
-            <textarea
-              v-model="form.message"
-              rows="6"
-              :placeholder="langState.t.main.applicationForm.messagePlaceholder"
-            ></textarea>
+            <textarea v-model="form.message" rows="6"
+              :placeholder="langState.t.main.applicationForm.messagePlaceholder"></textarea>
           </label>
         </div>
       </div>
@@ -103,7 +103,7 @@ const handleCvUpload = async (e) => {
 }
 
 const submitForm = async () => {
-  const url = 'https://formspree.io/f/mblobvbp' // zamień na swój ID
+  const url = 'https://formspree.io/f/mblobvbp'
 
   const payload = {
     ...form.value,
@@ -122,7 +122,7 @@ const submitForm = async () => {
   if (response.ok) {
     alert(langState.t.main.applicationForm.success)
     form.value = {
-       name: '',
+      name: '',
       email: '',
       phone: '',
       position: '',
@@ -140,7 +140,7 @@ const submitForm = async () => {
 .report-form-section {
   width: 100%;
   max-width: 1200px;
-  margin: 2rem auto 7rem auto;
+  margin: 2rem auto 10rem auto;
   padding: 2rem 3rem;
   background: #fff;
   color: var(--title);

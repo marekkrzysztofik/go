@@ -53,6 +53,7 @@ const cookiesAccepted = localStorage.getItem('cookies_choice') === 'accepted'
 <style scoped>
 .contact-section {
   width: 85%;
+  margin-bottom: 10rem;
   padding: 80px 20px;
   text-align: center;
 }

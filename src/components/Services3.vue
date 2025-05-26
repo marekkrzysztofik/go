@@ -127,7 +127,6 @@ const offerCategories = [
   },
 ]
 
-// dynamiczne dodawanie/odejmowanie klasy .visible
 function onIntersect(entry) {
   const el = entry.target
   if (entry.isIntersecting) {
@@ -137,7 +136,7 @@ function onIntersect(entry) {
   }
 }
 
-// dyrektywa intersection observer
+
 const vIntersect = {
   mounted(el, binding) {
     const observer = new IntersectionObserver(([entry]) => {
