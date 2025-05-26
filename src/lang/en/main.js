@@ -101,6 +101,7 @@ export default {
   mapButton: 'View our projects',
 
   contactTitle: 'Contact',
+  contactDesc:'Global Offshore - comprehensive support for offshore projects around the world.',
   departmentsTitle: 'Departments',
   production: 'Production',
   service: 'Service',

@@ -103,6 +103,7 @@ export default {
 
 
   contactTitle: 'Kontakt',
+  contactDesc:'Global Offshore – kompleksowe wsparcie projektów offshore na całym świecie.',
   departmentsTitle: 'Działy',
   production: 'Produkcja',
   service: 'Serwis',

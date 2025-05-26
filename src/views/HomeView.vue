@@ -3,7 +3,7 @@
   <WhyUs />
   <Services />
   <Process />
-  <Projects />
+  
   <OffshoreMap />
 </template>
 <script>

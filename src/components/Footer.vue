@@ -43,7 +43,7 @@
       </div>
       <div class="footer-section">
         <img src="/images/logo.png" alt="Global Offshore" class="footer-logo" />
-        <p class="center">Global Offshore – kompleksowe wsparcie projektów offshore na całym świecie.</p>
+        <p class="center">{{ langState.t.main.contactDesc }}</p>
       </div>
 
     </div>
