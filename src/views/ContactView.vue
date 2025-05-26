@@ -46,6 +46,25 @@
 <script setup>
 import langState from '@/lang/langState'
 import { MapPin, Mail, Phone } from 'lucide-vue-next'
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Kontakt | Global Offshore',
+  meta: [
+    {
+      name: 'description',
+      content: 'Skontatuj się z nami!',
+    },
+    {
+      property: 'og:title',
+      content: 'Kontakt | GLOBAL Offshore',
+    },
+    {
+      property: 'og:description',
+      content: 'Skontatuj się z nami!',
+    },
+  ],
+})
 
 const cookiesAccepted = localStorage.getItem('cookies_choice') === 'accepted'
 </script>

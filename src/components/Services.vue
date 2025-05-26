@@ -7,14 +7,8 @@
       <div v-for="(group, index) in groupedServices" :key="index" class="offer-group">
         <h3 class="group-title">{{ group.name }}</h3>
         <div class="service-grid">
-          <div
-            v-for="(service, idx) in group.services"
-            :key="idx"
-            ref="cards"
-            class="card"
-            :class="{ 'in-view': inViewCards.includes(`${index}-${idx}`) }"
-            :data-id="`${index}-${idx}`"
-          >
+          <div v-for="(service, idx) in group.services" :key="idx" ref="cards" class="card"
+            :class="{ 'in-view': inViewCards.includes(`${index}-${idx}`) }" :data-id="`${index}-${idx}`">
             <component :is="service.icon" class="icon" />
             <h4 class="card-title">{{ service.title }}</h4>
             <p class="card-description">{{ service.description }}</p>
@@ -26,6 +20,32 @@
 </template>
 
 <script setup>
+import { useHead } from '@vueuse/head'
+
+useHead({
+  meta: [
+    {
+      name: 'description',
+      content: 'Poznaj kompleksową ofertę usług Global Offshore. Specjalizujemy się w zarządzaniu projektami, projektach hydraulicznych, instalacjach offshore i serwisie przemysłowym.'
+    },
+    {
+      property: 'og:title',
+      content: 'Usługi Offshore | Global Offshore'
+    },
+    {
+      property: 'og:description',
+      content: 'Kompleksowe usługi dla branży offshore: hydraulika, mechanika, prefabrykacja, logistyka projektowa i więcej.'
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    },
+    {
+      property: 'og:url',
+      content: 'https://globaloffshore.pl/#services'
+    }
+  ]
+})
 import langState from '@/lang/langState'
 import { computed, ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import {
@@ -169,18 +189,19 @@ onBeforeUnmount(() => {
 
 @media (max-width: 500px) {
   .our-offer {
-  width: 90vw;
-  padding: 4rem 0rem;
-  background-color: #fff;
-  text-align: center;
-  color: #001120;
-}
-.offer-group {
-  background-color: #f9f9f9;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-  
+    width: 90vw;
+    padding: 4rem 0rem;
+    background-color: #fff;
+    text-align: center;
+    color: #001120;
+  }
+
+  .offer-group {
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+
 }
 </style>

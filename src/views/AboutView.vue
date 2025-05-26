@@ -23,6 +23,11 @@
 <script setup>
 import langState from '@/lang/langState'
 import Mission from '@/components/Mission.vue'
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'O nas | Global Offshore',
+})
 </script>
 
 <style scoped>

@@ -50,12 +50,8 @@
 
           <label>
             {{ langState.t.main.reportForm.message }}:
-            <textarea
-              v-model="form.message"
-              required
-              rows="8"
-              :placeholder="langState.t.main.reportForm.messagePlaceholder"
-            ></textarea>
+            <textarea v-model="form.message" required rows="8"
+              :placeholder="langState.t.main.reportForm.messagePlaceholder"></textarea>
           </label>
         </div>
       </div>
@@ -69,6 +65,33 @@
 
 
 <script setup>
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Zgłoś sprawę | Global Offshore',
+  meta: [
+    {
+      name: 'description',
+      content: 'Formularz zgłoszeniowy dla klientów Global Offshore – awarie, zamówienia i pytania. Szybki kontakt i możliwość załączenia zdjęć.'
+    },
+    {
+      property: 'og:title',
+      content: 'Zgłoś sprawę | Global Offshore'
+    },
+    {
+      property: 'og:description',
+      content: 'Szybki formularz do zgłaszania awarii, zamówień i pytań. Dodaj zdjęcia i uzyskaj pomoc od Global Offshore.'
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    },
+    {
+      property: 'og:url',
+      content: 'https://globaloffshore.pl/zgloszenie'
+    }
+  ]
+})
 import { ref } from 'vue'
 import langState from '@/lang/langState'
 const CLOUD_NAME = 'dilgij9iq'

@@ -42,7 +42,25 @@
 import { ref, computed } from 'vue'
 import langState from '@/lang/langState'
 import { HardHat, Wrench, Zap, Settings } from 'lucide-vue-next'
+import { useHead } from '@vueuse/head'
 
+useHead({
+     title: 'Oferty Pracy | Global Offshore',
+  meta: [
+    {
+      name: 'description',
+      content: 'Zobacz aktualne oferty pracy w firmie GLOBAL Offshore i aplikuj online.',
+    },
+    {
+      property: 'og:title',
+      content: 'Oferty pracy | GLOBAL Offshore',
+    },
+    {
+      property: 'og:description',
+      content: 'Dołącz do naszego zespołu. Praca w środowisku offshore i inżynierii.',
+    },
+  ],
+})
 const selectedIndex = ref(0)
 
 const selectJob = (index) => {
