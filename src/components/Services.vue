@@ -106,7 +106,6 @@ onBeforeUnmount(() => {
 .our-offer {
   width: 90vw;
   padding: 4rem 2rem;
-
   text-align: center;
   color: var(--title);
 }
@@ -133,7 +132,7 @@ onBeforeUnmount(() => {
 }
 
 .offer-group {
-  background-color: #f9f9f9;
+ 
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -190,14 +189,12 @@ onBeforeUnmount(() => {
 @media (max-width: 500px) {
   .our-offer {
     width: 90vw;
-    padding: 4rem 0rem;
-    background-color: #fff;
+    padding: 4rem 1rem;
     text-align: center;
     color: #001120;
   }
 
   .offer-group {
-    background-color: #f9f9f9;
     padding: 2rem;
     border-radius: 16px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);

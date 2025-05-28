@@ -31,6 +31,9 @@
                         <RouterLink to="/kontakt" class="nav-item" :class="{ active: route.path === '/kontakt' }">{{
                             langState.t.main.navbar.contact }}</RouterLink>
                     </li>
+                    <li>
+                        <RouterLink to="/zgloszenie" class="lang-toggle"> {{ langState.t.main.heroButton }}</RouterLink>
+                    </li>
 
                     <button class="lang-toggle" @click="toggleLang">
                         <Globe class="icon" />
@@ -56,12 +59,12 @@ const isNavbarHidden = ref(false)
 
 let lastScroll = 0
 const goToHash = async (hash) => {
-  if (route.path === '/') {
-    const el = document.querySelector(hash)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
-  } else {
-    router.push({ path: '/', hash })
-  }
+    if (route.path === '/') {
+        const el = document.querySelector(hash)
+        if (el) el.scrollIntoView({ behavior: 'smooth' })
+    } else {
+        router.push({ path: '/', hash })
+    }
 }
 function toggleLang() {
     langState.lang = langState.lang === 'pl' ? 'en' : 'pl'
@@ -227,9 +230,10 @@ onUnmounted(() => {
     gap: 3px;
     padding: 0.5rem 1.2rem;
     background-color: var(--primary);
-    border: 2px solid var(--primary);
+    text-decoration: none;
     color: var(--white);
     border-radius: 24px;
+    border: none;
     font-weight: 600;
     font-size: 0.9rem;
     cursor: pointer;

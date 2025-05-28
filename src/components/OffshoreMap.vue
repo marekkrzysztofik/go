@@ -158,4 +158,13 @@ onBeforeUnmount(() => {
 .cta-button:hover {
   background-color: #a52222;
 }
+
+@media (max-width: 500px) {
+  .map-container {
+  width: 92vw;
+  height: 300px;
+  border-radius: 16px;
+  margin: 0 auto;
+}
+}
 </style>

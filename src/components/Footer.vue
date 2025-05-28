@@ -3,7 +3,7 @@
     <div class="footer-container">
       <div class="footer-section">
         <div class="map-column">
-          <iframe class="map-frame"
+          <iframe v-if="cookiesAccepted" class="map-frame"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2314.3609802263877!2d18.476735476360208!3d54.54476178438526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fda69bf55d3751%3A0x33107e8d0c815bcf!2sHutnicza%2012%2C%2081-061%20Gdynia!5e0!3m2!1spl!2spl!4v1748006537689!5m2!1spl!2spl"
             height="200" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -68,7 +68,6 @@ const cookiesAccepted = localStorage.getItem('cookies_choice') === 'accepted'
 <style scoped>
 .footer {
   width: 100%;
-  background-color: #ffffff;
   color: #001120;
   border-top: 2px solid #d63830;
   padding: 3rem 2rem 1rem;
