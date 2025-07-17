@@ -1,16 +1,10 @@
 <template>
   <section class="process-section">
-     <h2 class="section-title">{{ langState.t.main.processSection.title }}</h2>
+    <h2 class="section-title">{{ langState.t.main.processSection.title }}</h2>
     <p class="section-subtitle">{{ langState.t.main.processSection.subtitle }}</p>
 
     <div class="steps-wrapper">
-      <div
-        v-for="(step, index) in steps"
-        :key="index"
-        class="step-box"
-        :data-index="index"
-        v-intersect="onIntersect"
-      >
+      <div v-for="(step, index) in steps" :key="index" class="step-box" :data-index="index" v-intersect="onIntersect">
         <div class="circle-wrapper">{{ index + 1 }}</div>
         <div class="step-content">
           <component :is="step.icon" class="icon" />
@@ -97,7 +91,7 @@ export default {
 .steps-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 40px;
   align-items: center;
   position: relative;
   padding-top: 40px;
@@ -112,9 +106,9 @@ export default {
   .steps-wrapper::before {
     content: '';
     position: absolute;
-    top: 65px;
-    left: 100px;
-    right: 100px;
+    top: 64px;
+    left: 110px;
+    right: 110px;
     height: 2px;
     background-color: #d63830;
     z-index: 0;
@@ -125,8 +119,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 240px;
-  height: 300px;
+  width: 30%;
   position: relative;
   opacity: 0;
   transform: translateY(40px);
@@ -144,26 +137,32 @@ export default {
   border-radius: 50%;
   background: #d63830;
   color: #fff;
-  font-weight: bold; 
+  font-weight: bold;
   font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
   position: relative;
   z-index: 1;
 }
 
 .step-content {
- 
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
   text-align: center;
   width: 100%;
-  height: 250px;
+  height: 200px; 
+  transition: all 0.3s;
 }
-
+.step-content:hover {
+  transform: translateY(-4px);
+}
 .icon {
   width: 28px;
   height: 28px;

@@ -23,30 +23,49 @@ const goToProjects = () => {
   router.push("/projects");
 };
 const projects = [
-  { title: "Bergen, Norwegia", longitude: 5.33, latitude: 60.39 },
-  { title: "Stavanger, Norwegia", longitude: 5.73, latitude: 58.97 },
-  { title: "Rio de Janeiro, Brazylia", longitude: -43.17, latitude: -22.91 },
-  { title: "Macaé, Brazylia", longitude: -41.78, latitude: -22.37 },
-  { title: "Lagos, Nigeria", longitude: 3.38, latitude: 6.52 },
-  { title: "Port Harcourt, Nigeria", longitude: 7.01, latitude: 4.78 },
-  { title: "Houston, USA", longitude: -95.36, latitude: 29.76 },
-  { title: "New Orleans, USA", longitude: -90.07, latitude: 29.95 },
+  // Europa
+  { title: "Gdynia, Polska", longitude: 18.56, latitude: 54.52 },
+  { title: "Gdańsk, Polska", longitude: 18.64, latitude: 54.38 },
+  { title: "Szczecin, Polska", longitude: 14.55, latitude: 53.43 },
+  { title: "Rotterdam, Holandia", longitude: 4.48, latitude: 51.92 },
+  { title: "Amsterdam, Holandia", longitude: 4.90, latitude: 52.37 },
+  { title: "Hamburg, Niemcy", longitude: 9.99, latitude: 53.55 },
+  { title: "Bremerhaven, Niemcy", longitude: 8.58, latitude: 53.54 },
   { title: "Aberdeen, UK", longitude: -2.09, latitude: 57.15 },
   { title: "Great Yarmouth, UK", longitude: 1.73, latitude: 52.61 },
-  { title: "Mumbai, Indie", longitude: 72.88, latitude: 19.07 },
-  { title: "Visakhapatnam, Indie", longitude: 83.22, latitude: 17.69 },
+  { title: "Esbjerg, Dania", longitude: 8.45, latitude: 55.47 },
+  { title: "Stavanger, Norwegia", longitude: 5.73, latitude: 58.97 },
+  { title: "Bergen, Norwegia", longitude: 5.33, latitude: 60.39 },
+  { title: "Marsylia, Francja", longitude: 5.38, latitude: 43.30 },
+  { title: "La Rochelle, Francja", longitude: -1.15, latitude: 46.16 },
+  { title: "Neapol, Włochy", longitude: 14.25, latitude: 40.85 },
+  { title: "Ravenna, Włochy", longitude: 12.20, latitude: 44.42 },
+  { title: "Barcelona, Hiszpania", longitude: 2.17, latitude: 41.38 },
+  { title: "Las Palmas, Hiszpania", longitude: -15.43, latitude: 28.13 },
+
+  // Afryka (RPA zamiast Nigerii)
+  { title: "Kapsztad, RPA", longitude: 18.42, latitude: -33.93 },
+  { title: "Durban, RPA", longitude: 31.02, latitude: -29.86 },
+  { title: "Port Elizabeth, RPA", longitude: 25.60, latitude: -33.96 },
+
+  // Bliski Wschód / Azja
   { title: "Dubaj, ZEA", longitude: 55.27, latitude: 25.20 },
   { title: "Abu Zabi, ZEA", longitude: 54.37, latitude: 24.47 },
   { title: "Dammam, Arabia Saudyjska", longitude: 50.10, latitude: 26.43 },
-  { title: "Dhahran, Arabia Saudyjska", longitude: 50.15, latitude: 26.30 },
-  { title: "Perth, Australia", longitude: 115.85, latitude: -31.95 },
-  { title: "Darwin, Australia", longitude: 130.84, latitude: -12.46 },
-  { title: "Kuala Lumpur, Malezja", longitude: 101.69, latitude: 3.14 },
-  { title: "Bintulu, Malezja", longitude: 113.03, latitude: 3.17 }
+  { title: "Mumbai, Indie", longitude: 72.88, latitude: 19.07 },
+
+  // Ameryka Płd i Płn
+  { title: "Rio de Janeiro, Brazylia", longitude: -43.17, latitude: -22.91 },
+  { title: "Macaé, Brazylia", longitude: -41.78, latitude: -22.37 },
+  { title: "Houston, USA", longitude: -95.36, latitude: 29.76 },
+  { title: "New Orleans, USA", longitude: -90.07, latitude: 29.95 },
+
+  // Australia
+  { title: "Perth, Australia", longitude: 115.85, latitude: -31.95 }
 ];
 
 onMounted(() => {
-  if (import.meta.env.SSR) return 
+  if (import.meta.env.SSR) return
   root = am5.Root.new("chartdiv");
   root.setThemes([am5themes_Animated.new(root)]);
 
@@ -71,9 +90,9 @@ onMounted(() => {
   polygonSeries.mapPolygons.template.setAll({
     tooltipText: "{name}",
     interactive: true,
-    fill: am5.color("#F2F2F2"),
-    stroke: am5.color("#D84040"),
-    strokeWidth: 0.5
+    fill: am5.color("#e0e0e0"),
+    stroke: am5.color("#999"),
+    strokeWidth: 0.3
   });
 
   polygonSeries.mapPolygons.template.states.create("hover", {
@@ -161,10 +180,10 @@ onBeforeUnmount(() => {
 
 @media (max-width: 500px) {
   .map-container {
-  width: 92vw;
-  height: 300px;
-  border-radius: 16px;
-  margin: 0 auto;
-}
+    width: 92vw;
+    height: 300px;
+    border-radius: 16px;
+    margin: 0 auto;
+  }
 }
 </style>

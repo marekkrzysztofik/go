@@ -1,56 +1,37 @@
 <template>
-  <section id="services" class="our-offer">
-    <h2 class="section-title">{{ langState.t.main.ourOffer.title }}</h2>
-    <p class="section-subtitle">{{ langState.t.main.ourOffer.subtitle }}</p>
+  <section class="our-offer">
+    <h2 class="main-title">{{ langState.t.main.ourOffer.title }}</h2>
+    <p class="main-subtitle">{{ langState.t.main.ourOffer.subtitle }}</p>
 
-    <div class="columns-grid">
-      <div v-for="(group, index) in groupedServices" :key="index" class="offer-group">
-        <h3 class="group-title">{{ group.name }}</h3>
-        <div class="service-grid">
-          <div v-for="(service, idx) in group.services" :key="idx" ref="cards" class="card"
-            :class="{ 'in-view': inViewCards.includes(`${index}-${idx}`) }" :data-id="`${index}-${idx}`">
-            <component :is="service.icon" class="icon" />
-            <h4 class="card-title">{{ service.title }}</h4>
-            <p class="card-description">{{ service.description }}</p>
-          </div>
-        </div>
+    <div v-for="(group, groupIndex) in groupedServices" :key="group.name"
+      :class="['group-section', groupIndex % 2 === 1 ? 'reverse' : '']">
+      <div :class="['image-wrapper', groupIndex % 2 === 1 ? 'reverse' : '']">
+        <img :src="group.src" :alt="group.name" class="background-image" />
+      </div>
+
+      <div class="content">
+        <h3 class="section-title">{{ group.name }}</h3>
+        <ul class="services-list">
+          <li v-for="service in group.services" :key="service.title">
+            <component :is="service.icon" class="icon-circle" />
+            <div class="text">
+              <h4>{{ service.title }}</h4>
+              <p>{{ service.description }}</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { useHead } from '@vueuse/head'
-
-useHead({
-  meta: [
-    {
-      name: 'description',
-      content: 'Poznaj kompleksową ofertę usług Global Offshore. Specjalizujemy się w zarządzaniu projektami, projektach hydraulicznych, instalacjach offshore i serwisie przemysłowym.'
-    },
-    {
-      property: 'og:title',
-      content: 'Usługi Offshore | Global Offshore'
-    },
-    {
-      property: 'og:description',
-      content: 'Kompleksowe usługi dla branży offshore: hydraulika, mechanika, prefabrykacja, logistyka projektowa i więcej.'
-    },
-    {
-      property: 'og:type',
-      content: 'website'
-    },
-    {
-      property: 'og:url',
-      content: 'https://globaloffshore.pl/#services'
-    }
-  ]
-})
 import langState from '@/lang/langState'
 import { computed, ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import {
-  ClipboardList, Wrench, Droplet, Eye, Bug, CheckCircle,
-  RotateCcw, Package, Truck, BadgeCheck, Search, Cpu
+  ClipboardList, Wrench, Droplet,
+  Eye, Bug, CheckCircle,
+  Package, Truck, Search
 } from 'lucide-vue-next'
 
 const iconMatrix = [
@@ -62,143 +43,136 @@ const iconMatrix = [
 const groupedServices = computed(() =>
   langState.t.main.ourOffer.groups.map((group, groupIndex) => ({
     name: group.name,
+    src: group.src,
     services: group.services.map((service, serviceIndex) => ({
       ...service,
       icon: iconMatrix[groupIndex][serviceIndex]
     }))
   }))
 )
-
-const cards = ref([])
-const inViewCards = ref([])
-let observer = null
-
-onMounted(() => {
-  observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const id = entry.target.dataset.id
-        if (entry.isIntersecting) {
-          if (!inViewCards.value.includes(id)) {
-            inViewCards.value.push(id)
-          }
-        } else {
-          inViewCards.value = inViewCards.value.filter((v) => v !== id)
-        }
-      })
-    },
-    { threshold: 0.3 }
-  )
-
-  nextTick(() => {
-    cards.value.forEach((el) => {
-      if (el) observer.observe(el)
-    })
-  })
-})
-
-onBeforeUnmount(() => {
-  if (observer) observer.disconnect()
-})
 </script>
 
 <style scoped>
 .our-offer {
-  width: 90vw;
-  padding: 4rem 2rem;
-  text-align: center;
-  color: var(--title);
-}
-
-.section-title {
-  font-size: 2.3rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--redtitle);
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  margin-bottom: 3rem;
-  color: var(--subtitle);
-}
-
-.columns-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1400px;
+  padding: 5rem 2rem;
+  background-color: #fefefe;
   margin: 0 auto;
 }
 
-.offer-group {
- 
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+.main-title {
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: #001120;
 }
 
-.group-title {
-  font-size: 1.6rem;
-  margin-bottom: 1.5rem;
-  color: #d63830;
-  font-weight: 600;
+.main-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 4rem;
 }
 
-.service-grid {
+.group-section {
+  max-width: 1100px;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.2rem;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 6rem;
 }
 
-.card {
-  height: 150px;
-  background-color: #ffffff;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
-  transition: transform 0.6s ease, opacity 0.6s ease;
-  transform: translateY(40px);
-  opacity: 0;
-  text-align: left;
+.group-section.reverse {
+  direction: rtl;
 }
 
-.card.in-view {
-  transform: translateY(0);
-  opacity: 1;
+.group-section.reverse .content,
+.group-section.reverse .services-list li {
+  direction: ltr;
 }
 
-.icon {
-  height: 28px;
-  width: 28px;
-  color: #d63830;
-  margin-bottom: 0.75rem;
+.image-wrapper {
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  overflow: hidden;
 }
 
-.card-title {
-  font-size: 1.05rem;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
+.image-wrapper.reverse {
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
 }
 
-.card-description {
-  font-size: 0.9rem;
-  color: #333;
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.03);
+  transition: transform 0.5s ease;
 }
 
-@media (max-width: 500px) {
-  .our-offer {
-    width: 90vw;
-    padding: 4rem 1rem;
-    text-align: center;
-    color: #001120;
+.image-wrapper:hover .background-image {
+  transform: scale(1.05);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #001120;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.services-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.icon-circle {
+  background-color: #d63830;
+  color: white;
+  padding: 0.6rem;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+}
+
+.text h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.text p {
+  margin: 0.3rem 0 0;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+@media (max-width: 960px) {
+
+  .group-section,
+  .group-section.reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
   }
 
-  .offer-group {
-    padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  .image-wrapper {
+    clip-path: none;
+    height: 250px;
   }
 
+  .background-image {
+    height: 100%;
+  }
 }
 </style>

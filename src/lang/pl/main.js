@@ -4,13 +4,26 @@ export default {
     services: 'Usługi',
     carrers: 'Kariera',
     contact: 'Kontakt',
-    projects: 'Projekty',
-
+    products: 'Produkty',
+    call: 'Zadzwoń do nas',
+    write: 'Napisz do nas',
   },
-  heroTitle: 'Projektujemy Twój kolejny rozdział.',
-  heroSubtitle: 'Global Offshore oferuje sprawdzone usługi morskie i offshore — od systemów hydraulicznych po wsparcie projektowe.',
+
+  heroTitle: 'Witamy w',
+  heroSubtitle: 'GLOBAL OFFSHORE',
+  heroDesc : 'GLOBAL Offshore dostarcza wysokiej jakości produkty OEM i usługi dla sektora morskiego i offshore na całym świecie. Nasz zespół tworzą doświadczeni specjaliści, pracujący z wykorzystaniem dedykowanego sprzętu i narzędzi.',
   heroButton: 'Zgłoś sprawę',
   heroProcessTitle: 'Zobacz projekty',
+
+
+
+  // heroTitle: 'Projektujemy Twój kolejny rozdział.',
+  // heroSubtitle: 'Global Offshore oferuje sprawdzone usługi morskie i offshore — od systemów hydraulicznych po wsparcie projektowe.',
+  // heroButton: 'Zgłoś sprawę',
+  // heroProcessTitle: 'Zobacz projekty',
+
+
+
   statsSection: {
     title: 'Nasze liczby mówią same za siebie',
     subtitle: 'Ponad dekada doświadczenia i setki zrealizowanych projektów na całym świecie.',
@@ -21,12 +34,14 @@ export default {
       services: 'Serwisy offshore'
     }
   },
+  message: 'Wiadomość',
   ourOffer: {
     title: 'Nasza oferta',
     subtitle: 'Kompleksowe wsparcie od projektowania, przez serwis, aż po logistykę.',
     groups: [
       {
         name: 'Produkcja',
+        src: '/images/produkcja.jpg',
         services: [
           { title: 'Zarządzanie projektami', description: 'Pełna kontrola i koordynacja projektów technicznych.' },
           { title: 'Montaż mechaniczny', description: 'Profesjonalny montaż urządzeń i systemów.' },
@@ -35,6 +50,7 @@ export default {
       },
       {
         name: 'Serwis',
+        src: '/images/serwis.png',
         services: [
           { title: 'Inspekcje', description: 'Kontrola i ocena stanu technicznego urządzeń.' },
           { title: 'Rozwiązywanie usterek', description: 'Szybka diagnostyka i naprawa.' },
@@ -43,6 +59,7 @@ export default {
       },
       {
         name: 'Sprzedaż i logistyka',
+        src: '/images/sprzedaż-i-logistyka.png',
         services: [
           { title: 'Dostawy części', description: 'Komponenty OEM i zamienne.' },
           { title: 'Logistyka i transport', description: 'Globalna obsługa dostaw i spedycji.' },
@@ -51,28 +68,8 @@ export default {
       }
     ]
   },
-  processSection: {
-    title: 'Proces współpracy',
-    subtitle: 'Przejrzysty przebieg każdego projektu – od zapytania po realizację i wsparcie.',
-    steps: [
-      {
-        title: 'Konsultacja',
-        description: 'Zbieramy wymagania techniczne, omawiamy szczegóły projektu.'
-      },
-      {
-        title: 'Planowanie',
-        description: 'Opracowujemy harmonogram, dobieramy zasoby i zespół.'
-      },
-      {
-        title: 'Realizacja',
-        description: 'Wykonujemy montaż, testy i dostawy w ustalonych terminach.'
-      },
-      {
-        title: 'Wsparcie',
-        description: 'Zapewniamy serwis, pomoc i długoterminowe wsparcie techniczne.'
-      }
-    ]
-  },
+
+
   projectsSection: {
     title: 'Realizacje i projekty',
     subtitle: 'Zobacz wybrane realizacje z całego świata.',
@@ -87,7 +84,7 @@ export default {
         title: 'Modernizacja platformy',
         description: 'Generalny remont systemów rurowych i siłowników.',
         location: 'Holandia',
-        image: '/images/2.jpg'
+        image: '/images/1.jpg'
       },
       {
         title: 'Projekt logistyczny',
@@ -97,13 +94,13 @@ export default {
       }
     ]
   },
-  mapTitle: 'Nasze projekty na świecie',
+  mapTitle: 'Zrealizowane projekty i serwisy na świecie',
   mapSubtitle: 'Realizacje GLOBAL Offshore w strategicznych lokalizacjach przemysłu offshore.',
   mapButton: 'Zobacz nasze realizacje',
 
 
   contactTitle: 'Kontakt',
-  contactDesc:'Global Offshore – kompleksowe wsparcie projektów offshore na całym świecie.',
+  contactDesc: 'Global Offshore – kompleksowe wsparcie projektów offshore na całym świecie.',
   departmentsTitle: 'Działy',
   production: 'Produkcja',
   service: 'Serwis',
@@ -266,5 +263,59 @@ export default {
   }
 
 
-
+  //ourOffer: {
+  //   title: 'Nasza oferta',
+  //   subtitle: 'Kompleksowe wsparcie od projektowania, przez serwis, aż po logistykę.',
+  //   groups: [
+  //     {
+  //       name: 'Produkcja',
+  //       src: '/images/produkcja.jpg',
+  //       services: [
+  //         { title: 'Zarządzanie projektami', description: 'Pełna kontrola i koordynacja projektów technicznych.' },
+  //         { title: 'Montaż mechaniczny', description: 'Profesjonalny montaż urządzeń i systemów.' },
+  //         { title: 'Instalacje hydrauliczne', description: 'Precyzyjne układy wysokociśnieniowe.' }
+  //       ]
+  //     },
+  //     {
+  //       name: 'Serwis',
+  //       src: '/images/serwis.png',
+  //       services: [
+  //         { title: 'Inspekcje', description: 'Kontrola i ocena stanu technicznego urządzeń.' },
+  //         { title: 'Rozwiązywanie usterek', description: 'Szybka diagnostyka i naprawa.' },
+  //         { title: 'Testy i uruchomienia', description: 'Kompleksowe testy końcowe i certyfikacja.' }
+  //       ]
+  //     },
+  //     {
+  //       name: 'Sprzedaż i logistyka',
+  //       src: '/images/sprzedaż-i-logistyka.png',
+  //       services: [
+  //         { title: 'Dostawy części', description: 'Komponenty OEM i zamienne.' },
+  //         { title: 'Logistyka i transport', description: 'Globalna obsługa dostaw i spedycji.' },
+  //         { title: 'Zakupy techniczne', description: 'Dobór i sourcing komponentów specjalistycznych.' }
+  //       ]
+  //     }
+  //   ]
+  // },
+  // processSection: {
+  //   title: 'Proces współpracy',
+  //   subtitle: 'Przejrzysty przebieg każdego projektu – od zapytania po realizację i wsparcie.',
+  //   steps: [
+  //     {
+  //       title: 'Konsultacja',
+  //       description: 'Zbieramy wymagania techniczne, omawiamy szczegóły projektu.'
+  //     },
+  //     {
+  //       title: 'Planowanie',
+  //       description: 'Opracowujemy harmonogram, dobieramy zasoby i zespół.'
+  //     },
+  //     {
+  //       title: 'Realizacja',
+  //       description: 'Wykonujemy montaż, testy i dostawy w ustalonych terminach.'
+  //     },
+  //     {
+  //       title: 'Wsparcie',
+  //       description: 'Zapewniamy serwis, pomoc i długoterminowe wsparcie techniczne.'
+  //     }
+  //   ]
+  // },
 }

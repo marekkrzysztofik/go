@@ -23,6 +23,7 @@
 <script setup>
 import langState from '@/lang/langState'
 import Mission from '@/components/Mission.vue'
+import Features from '@/components/Features.vue'
 import { useHead } from '@vueuse/head'
 
 useHead({

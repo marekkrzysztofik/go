@@ -1,289 +1,368 @@
 <template>
-    <header class="navbar" :class="{ hidden: isNavbarHidden }">
-        <div class="navbar-inner">
-            <RouterLink to="/" class="logo-link">
-                <img src="/images/logo.png" alt="Logo" class="logo" />
-            </RouterLink>
-
-            <button class="hamburger" @click="toggleMenu" :aria-expanded="isMenuOpen">
-                <span :class="{ open: isMenuOpen }"></span>
-                <span :class="{ open: isMenuOpen }"></span>
-                <span :class="{ open: isMenuOpen }"></span>
-            </button>
-
-            <transition name="slide-fade">
-                <ul v-show="isMenuOpen || isDesktop" class="nav-menu" @click="toggleMenu"
-                    :class="{ desktop: isDesktop }">
-                    <li>
-                        <a href="#services" class="nav-item" @click.prevent="goToHash('#services')">{{
-                            langState.t.main.navbar.services }}</a>
-                    </li>
-                    <li>
-                        <RouterLink to="/about" class="nav-item" :class="{ active: route.path === '/about' }">{{
-                            langState.t.main.navbar.about }}</RouterLink>
-                    </li>
-                    <li>
-                        <RouterLink to="/kariera" class="nav-item" :class="{ active: route.path === '/kariera' }">
-                            {{
-                                langState.t.main.navbar.carrers }}</RouterLink>
-                    </li>
-                    <li>
-                        <RouterLink to="/kontakt" class="nav-item" :class="{ active: route.path === '/kontakt' }">{{
-                            langState.t.main.navbar.contact }}</RouterLink>
-                    </li>
-                    <li>
-                        <RouterLink to="/zgloszenie" class="lang-toggle"> {{ langState.t.main.heroButton }}</RouterLink>
-                    </li>
-
-                    <button class="lang-toggle" @click="toggleLang">
-                        <Globe class="icon" />
-                        {{ langState.lang.toUpperCase() }}
-                    </button>
-                </ul>
-            </transition>
+  <header class="navbar" :class="{ hidden: isNavbarHidden }">
+    <!-- GÓRNA CZĘŚĆ -->
+    <div class="navbar-top">
+      <RouterLink to="/" class="logo-link">
+        <img src="/images/logo.png" alt="Logo" class="logo" />
+      </RouterLink>
+      <div class="spacer" />
+      <button class="hamburger" @click="toggleMenu" aria-label="Toggle menu">
+        <span :class="{ open: isMenuOpen }"></span>
+        <span :class="{ open: isMenuOpen }"></span>
+        <span :class="{ open: isMenuOpen }"></span>
+      </button>
+      <div class="contact-info" v-show="isDesktop">
+        <div class="info-tile">
+          <Smartphone class="icon" />
+          <div>
+            <strong>{{ langState.t.main.navbar.call }}</strong><br />
+            <span>+48 888 293 024</span>
+          </div>
         </div>
-    </header>
+        <div class="info-tile">
+          <Mail class="icon" />
+          <div>
+            <strong>{{ langState.t.main.navbar.write }}</strong><br />
+            <span>contact@globaloffshore.pl</span>
+          </div>
+        </div>
+        <div class="info-tile">
+          <MapPin class="icon" />
+          <div>
+            <strong>84-240 Reda</strong><br />
+            <span>ul. Gniewowska 12</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DÓŁ - MENU -->
+    <div class="navbar-bottom" v-show="isDesktop">
+      <div class="bottom-inner">
+        <nav class="nav-links">
+          <RouterLink to="/about">{{ langState.t.main.navbar.about }}</RouterLink>
+          <RouterLink to="/produkty">{{ langState.t.main.navbar.products }}</RouterLink>
+          <RouterLink to="/kariera">{{ langState.t.main.navbar.carrers }}</RouterLink>
+          <RouterLink to="/kontakt" class="nav-button"> {{ langState.t.main.navbar.contact }}</RouterLink>
+          <button class="nav-button" @click="toggleLang">
+            <Globe class="icon" />
+            {{ langState.lang.toUpperCase() }}
+          </button>
+        </nav>
+      </div>
+    </div>
+
+    <transition name="slide-fade">
+      <div class="mobile-menu" v-if="isMenuOpen && !isDesktop" @click.self="toggleMenu">
+        <nav class="mobile-nav">
+          <RouterLink @click="toggleMenu" to="/about">{{ langState.t.main.navbar.about }}</RouterLink>
+          <RouterLink @click="toggleMenu" to="/kariera">{{ langState.t.main.navbar.carrers }}</RouterLink>
+          <RouterLink @click="toggleMenu" to="/produkty">Products</RouterLink>
+          <RouterLink @click="toggleMenu" to="/map">Map</RouterLink>
+          <RouterLink @click="toggleMenu" to="/kontakt">{{ langState.t.main.navbar.contact }}</RouterLink>
+          <RouterLink @click="toggleMenu" to="/zgloszenie" class="nav-button"> {{ langState.t.main.heroButton }}
+          </RouterLink>
+          <button class="nav-button" @click="toggleLang">
+            <Globe class="icon" />
+            {{ langState.lang.toUpperCase() }}
+          </button>
+        </nav>
+      </div>
+    </transition>
+  </header>
 </template>
 
+
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import { Mail, Smartphone, MapPin, Globe } from 'lucide-vue-next'
+import { ref, onMounted, onUnmounted, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import langState from '@/lang/langState'
-import { Globe } from 'lucide-vue-next'
 
 const route = useRoute()
 const router = useRouter()
 const isMenuOpen = ref(false)
-const isDesktop = ref(window.innerWidth > 1024)
+const isDesktop = ref(false)
 const isNavbarHidden = ref(false)
 
 let lastScroll = 0
 const goToHash = async (hash) => {
-    if (route.path === '/') {
-        const el = document.querySelector(hash)
-        if (el) el.scrollIntoView({ behavior: 'smooth' })
-    } else {
-        router.push({ path: '/', hash })
-    }
+  if (route.path === '/') {
+    const el = document.querySelector(hash)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  } else {
+    router.push({ path: '/', hash })
+  }
 }
+
 function toggleLang() {
-    langState.lang = langState.lang === 'pl' ? 'en' : 'pl'
+  langState.lang = langState.lang === 'pl' ? 'en' : 'pl'
 }
 
 function toggleMenu() {
-    if (!isDesktop.value) isMenuOpen.value = !isMenuOpen.value
+  if (!isDesktop.value) {
+    isMenuOpen.value = !isMenuOpen.value
+  }
 }
 
 function handleResize() {
+  if (typeof window !== 'undefined') {
     isDesktop.value = window.innerWidth > 1024
-    if (isDesktop.value) isMenuOpen.value = false
+    if (isDesktop.value) {
+      isMenuOpen.value = false
+    }
+  }
 }
+watchEffect(() => {
+  if (isDesktop.value) isMenuOpen.value = false
+})
 
 function handleScroll() {
-    const currentScroll = window.pageYOffset
+  const currentScroll = window.pageYOffset
 
-    if (currentScroll <= 0) {
-        isNavbarHidden.value = false
-        return
-    }
+  if (currentScroll <= 0) {
+    isNavbarHidden.value = false
+    return
+  }
 
-    if (currentScroll > lastScroll && currentScroll > 100) {
-        isNavbarHidden.value = true
-    } else if (currentScroll < lastScroll) {
-        isNavbarHidden.value = false
-    }
+  if (currentScroll > lastScroll && currentScroll > 100) {
+    isNavbarHidden.value = true
+  } else if (currentScroll < lastScroll) {
+    isNavbarHidden.value = false
+  }
 
-    lastScroll = currentScroll
+  lastScroll = currentScroll
 }
 
-onMounted(async () => {
+onMounted(() => {
+  handleResize()
+  if (typeof window !== 'undefined') {
     window.addEventListener('resize', handleResize)
     window.addEventListener('scroll', handleScroll)
+  }
 })
 
 onUnmounted(() => {
+  if (typeof window !== 'undefined') {
     window.removeEventListener('resize', handleResize)
     window.removeEventListener('scroll', handleScroll)
+  }
 })
 </script>
 
-<style>
+<style scoped>
 .navbar {
-    width: 100%;
-    background: rgba(255, 255, 255, 1);
-    padding: 1rem 2rem;
-    position: sticky;
-    top: 0;
-    border-bottom: 2px solid var(--primary);
-    z-index: 1000;
-    transition: transform 0.3s ease;
+  width: 100%;
+  font-family: sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease;
 }
 
 .navbar.hidden {
-    transform: translateY(-100%);
+  transform: translateY(-100%);
 }
 
-.navbar-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* GÓRA */
+.navbar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4vw;
+  background: white;
 }
 
 .logo {
-    height: 60px;
+  height: 60px;
 }
 
-.logo-link {
-    margin-left: 20px;
+.contact-info {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.info-tile {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.info-tile .icon {
+  width: 24px;
+  height: 24px;
+  color: #8b1e1e;
+}
+
+.info-tile strong {
+  font-size: 0.95rem;
+  color: #000;
+}
+
+.info-tile span {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* DÓŁ */
+.navbar-bottom {
+  position: relative;
+  background-color: var(--primary);
+  height: 60px;
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+  width: 60%;
+}
+
+.bottom-inner {
+  height: 100%;
+  margin-right: 7rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-icon {
+  color: white;
+  width: 24px;
+  height: 24px;
+  transition: opacity 0.2s ease;
+}
+
+.social-icon:hover {
+  opacity: 0.8;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0.5rem 1.2rem;
+  background-color: var(--primary);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 24px;
+  border: solid white 1px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background: #fefefe;
+  color: var(--primary);
+}
+
+.nav-button .icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.5;
 }
 
 .hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 32px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 999;
-    padding: 0;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
 }
 
 .hamburger span {
-    display: block;
-    width: 30px;
-    height: 3px;
-    background-color: #333;
-    border-radius: 2px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    transform-origin: center center;
-    margin: 3px auto;
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #333;
+  transition: 0.4s;
 }
 
 .hamburger span.open:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+  transform: rotate(45deg) translate(5px, 4px);
 }
 
 .hamburger span.open:nth-child(2) {
-    opacity: 0;
+  opacity: 0;
 }
 
 .hamburger span.open:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
+  transform: rotate(-45deg) translate(7px, -7px);
 }
 
-.nav-menu {
+@media (max-width: 1024px) {
+  .hamburger {
     display: flex;
-    flex-direction: column;
-    list-style: none;
-    gap: 1rem;
-    padding: 0;
-    overflow: hidden;
-    max-height: 500px;
+  }
+
+  .contact-info {
+    display: none;
+  }
+
+  .navbar-bottom {
+    display: none;
+  }
 }
 
-.nav-menu.desktop {
-    flex-direction: row;
-    align-items: center;
-    margin: 0;
-    gap: 2rem;
-    max-height: none;
+/* Mobile Menu Overlay */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-.nav-item {
-    color: var(--redtitle);
-    text-decoration: none;
-    font-weight: 500;
-    position: relative;
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
 }
 
-.nav-item::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    width: 0%;
-    height: 1px;
-    background: var(--primary);
-    transition: width 0.2s;
+.mobile-nav a,
+.mobile-nav button {
+  font-size: 1.1rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.nav-item:hover::after,
-.nav-item.active::after {
-    width: 100%;
-}
-
-.nav-cta {
-    color: white;
-    text-decoration: none;
-}
-
-.nav-cta:hover {
-    background: #a7281f;
-}
-
-.lang-toggle {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    padding: 0.5rem 1.2rem;
-    background-color: var(--primary);
-    text-decoration: none;
-    color: var(--white);
-    border-radius: 24px;
-    border: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.lang-toggle:hover {
-    background: #a7281f;
-}
-
-.lang-toggle .icon {
-    width: 18px;
-    height: 18px;
-    stroke-width: 2.5;
-}
-
-/* Animacja rozwijanego menu */
+/* Transition */
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-    transition: all 0.3s ease;
-    overflow: hidden;
+  transition: all 0.4s ease;
 }
 
 .slide-fade-enter-from,
 .slide-fade-leave-to {
-    opacity: 0;
-    transform: translateY(-10px);
-    max-height: 0;
-}
-
-@media (max-width: 1024px) {
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-menu {
-        width: 100%;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: white;
-        padding: 1rem 2rem;
-        border-top: 1px solid #eee;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    .nav-item,
-    .nav-cta,
-    .lang-toggle {
-        width: 100%;
-    }
+  opacity: 0;
+  transform: translateY(-10%);
 }
 </style>

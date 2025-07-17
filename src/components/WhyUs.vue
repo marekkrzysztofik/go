@@ -104,7 +104,7 @@ onMounted(async () => {
 }
 
 .stats-grid {
-  width: 80vw;
+  width: 70vw;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;

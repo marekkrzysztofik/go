@@ -17,19 +17,25 @@ import { ref, onMounted } from 'vue'
 const hasDecision = ref(false)
 
 onMounted(() => {
-  const stored = localStorage.getItem('cookies_choice')
-  hasDecision.value = stored === 'accepted' || stored === 'declined'
+  if (typeof localStorage !== 'undefined') {
+    const stored = localStorage.getItem('cookies_choice')
+    hasDecision.value = stored === 'accepted' || stored === 'declined'
+  }
 })
 
 const acceptCookies = () => {
-  localStorage.setItem('cookies_choice', 'accepted')
-  hasDecision.value = true
-  location.reload()
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem('cookies_choice', 'accepted')
+    hasDecision.value = true
+    location.reload()
+  }
 }
 
 const declineCookies = () => {
-  localStorage.setItem('cookies_choice', 'declined')
-  hasDecision.value = true
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem('cookies_choice', 'declined')
+    hasDecision.value = true
+  }
 }
 </script>
 

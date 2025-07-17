@@ -175,8 +175,7 @@ const submitForm = async () => {
 <style scoped>
 .report-form-section {
   width: 100%;
-  max-width: 1200px;
-  margin: 2rem auto 10rem auto;
+  margin: 8rem 0 0 0;
   padding: 2rem 3rem;
   background: #fff;
   color: var(--title);
@@ -189,7 +188,7 @@ const submitForm = async () => {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 2rem;
-  text-align: left;
+  text-align: center;
 }
 
 .form-grid {

@@ -4,12 +4,22 @@ export default {
     services: 'Services',
     carrers: 'Carrers',
     contact: 'Contact',
-    projects: 'Projects',
+    products: 'Products',
+    call: 'Call Us',
+    write: 'Write to Us',
   },
-  heroTitle: 'We design your next chapter.',
-  heroSubtitle: 'Global Offshore provides proven marine and offshore services — from hydraulic systems to project support.',
-  heroButton: 'Report an issue',
-  heroProcessTitle: 'View projects',
+
+  heroTitle: 'Welcome to',
+  heroSubtitle: 'GLOBAL OFFSHORE',
+  heroDesc : 'GLOBAL Offshore provides high quality OEM products and services within marine and offshore market worldwide. Our team consists of well experienced technical personnel who works with only job dedicated equipment and tools.',
+
+  // heroTitle: 'We design your next chapter.',
+  // heroSubtitle: 'Global Offshore provides proven marine and offshore services — from hydraulic systems to project support.',
+  // heroButton: 'Report an issue',
+  // heroProcessTitle: 'View projects',
+
+
+
   statsSection: {
     title: 'Our numbers speak for themselves',
     subtitle: 'Over a decade of experience and hundreds of completed projects around the world.',
@@ -26,6 +36,7 @@ export default {
     groups: [
       {
         name: 'Production',
+        src: '/images/produkcja.png',
         services: [
           { title: 'Project management', description: 'Full control and coordination of technical projects.' },
           { title: 'Mechanical assembly', description: 'Professional installation of equipment and systems.' },
@@ -34,6 +45,7 @@ export default {
       },
       {
         name: 'Service',
+        src: '/images/serwis.png',
         services: [
           { title: 'Inspections', description: 'Condition assessment and technical evaluation of equipment.' },
           { title: 'Troubleshooting', description: 'Fast diagnostics and repairs.' },
@@ -42,6 +54,7 @@ export default {
       },
       {
         name: 'Sales and logistics',
+        src: '/images/sprzedaż-i-logistyka.png',
         services: [
           { title: 'Parts delivery', description: 'OEM and replacement components.' },
           { title: 'Logistics and transport', description: 'Global supply chain and freight handling.' },
@@ -96,7 +109,7 @@ export default {
       }
     ]
   },
-  mapTitle: 'Our projects around the world',
+  mapTitle: 'Completed projects and services worldwide',
   mapSubtitle: 'GLOBAL Offshore projects in strategic offshore industry locations.',
   mapButton: 'View our projects',
 

@@ -8,7 +8,7 @@ import router from "./router";
 
 export const createApp  = ViteSSG(
     App,
-    { routes: router.options.routes }, // potrzebujemy tylko tablicy routes
+    { routes: router.options.routes }, 
     ({ app, router }) => {
       app.use(router)
   

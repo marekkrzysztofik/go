@@ -30,22 +30,22 @@
           <MapPin class="icon" />
           <div>
             <h3>{{ langState.t.main.address }}</h3>
-            <p>Hutnicza 12<br />81-061 Gdynia, Poland</p>
+            <p>Gniewowska 12<br />84-240 Reda</p>
           </div>
         </div>
       </div>
       <div class="map-column">
-        <iframe v-if="cookiesAccepted" class="map-frame"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2332.2992398628817!2d18.538839316075887!3d54.55105700385359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fd7332b10e9f91%3A0xa546364763bb6c2a!2sHutnicza%2012%2C%2081-061%20Gdynia!5e0!3m2!1spl!2spl!4v1683192302859!5m2!1spl!2spl"
-          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe v-if="cookiesAccepted" class="map-frame" src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d586.7139946208991!2d18.345530750137065!3d54.599088617689276!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fdbac61a9d94ff%3A0x5bac1961ab2c72b6!2sGniewowska%2012%2C%2084-240%20Reda!5e1!3m2!1sen!2spl!4v1752754899535!5m2!1sen!2spl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
+    <FormView />
   </section>
 </template>
 
 <script setup>
 import langState from '@/lang/langState'
 import { MapPin, Mail, Phone } from 'lucide-vue-next'
+import FormView from '@/views/FormView.vue'
 import { useHead } from '@vueuse/head'
 
 useHead({
@@ -66,14 +66,18 @@ useHead({
   ],
 })
 
-const cookiesAccepted = localStorage.getItem('cookies_choice') === 'accepted'
+let cookiesAccepted = false
+
+if (typeof localStorage !== 'undefined') {
+  cookiesAccepted = localStorage.getItem('cookies_choice') === 'accepted'
+}
 </script>
 
 <style scoped>
 .contact-section {
-  width: 85%;
+  width: 75%;
   margin-bottom: 10rem;
-  padding: 80px 20px;
+  padding: 80px 0;
   text-align: center;
 }
 
@@ -97,23 +101,10 @@ const cookiesAccepted = localStorage.getItem('cookies_choice') === 'accepted'
   margin: 0 auto;
 }
 
-@media (max-width: 1024px) {
-  .contact-layout {
-    flex-direction: column;
-  }
 
-  .map-column {
-    min-width: 100%;
-    height: 250px;
-  }
-
-  .contact-section {
-    width: 95%;
-    padding: 80px 15px;
-  }
-}
 
 .info-column {
+  width: 40%;
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
@@ -156,7 +147,7 @@ const cookiesAccepted = localStorage.getItem('cookies_choice') === 'accepted'
 }
 
 .map-column {
-  width: 50%;
+  width: 60%;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -166,5 +157,20 @@ const cookiesAccepted = localStorage.getItem('cookies_choice') === 'accepted'
   width: 100%;
   min-height: 100%;
   border: none;
+}
+
+@media (max-width: 1024px) {
+  .contact-layout {
+    flex-direction: column;
+  }
+
+  .map-column {
+    display: none;
+  }
+
+  .info-column {
+    width: 100%;
+
+  }
 }
 </style>

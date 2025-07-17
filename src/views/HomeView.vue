@@ -1,9 +1,10 @@
 <template>
-  <HeroSection />
+  <HeroSection2 />
+  <About />
+  <Services1 />
+  <Projects />
+   <ContactForm />
   <WhyUs />
-  <Services />
-  <Process />
-  
   <OffshoreMap />
 </template>
 <script>
@@ -11,14 +12,23 @@ export const prerender = true
 </script>
 <script setup>
 import HeroSection from '@/components/HeroSection.vue'
+import HeroSection2 from '@/components/HeroSection2.vue'
 import Services from '@/components/Services.vue'
+import Services2 from '@/components/Services2.vue'
+import Services3 from '@/components/Services3.vue'
+import Services1 from '@/components/Services1.vue'
+import Servicesog from '@/components/Servicesog.vue'
 import WhyUs from '@/components/WhyUs.vue'
 import OffshoreMap from '@/components/OffshoreMap.vue'
+import ContactForm from '@/components/ContactForm.vue'
+import Mission from '@/components/Mission.vue'
+
 import Projects from '@/components/Projects.vue'
 import Process from '@/components/Process.vue'
 import { useHead } from '@vueuse/head'
 import { useRoute } from 'vue-router'
 import { onMounted, nextTick } from 'vue'
+import About from '@/components/About.vue'
 
 const route = useRoute()
 onMounted(async () => {
@@ -32,10 +42,10 @@ onMounted(async () => {
 })
 
 useHead({
-  title: 'Global Offshore – wsparcie projektów offshore',
+  title: 'Global Offshore – hydraulika siłowa i wsparcie projektów offshore',
   meta: [
-    { name: 'description', content: 'Kompleksowe instalacje i serwis offshore – poznaj naszą ofertę.' },
-    { name: 'keywords', content: 'offshore, serwis, instalacje, projekty, global offshore' },
+    { name: 'description', content: "Specjalizujemy się w instalacjach offshore, hydraulice siłowej oraz sprzedaży części i komponentów. Kompleksowe wsparcie projektów – sprawdź naszą ofertę." },
+    { name: 'keywords', content: 'hydraulika siłowa, offshore, serwis, instalacje, projekty, global offshore' },
     { property: 'og:title', content: 'Global Offshore – wsparcie projektów offshore' },
     { property: 'og:description', content: 'Kompleksowe instalacje i serwis offshore – poznaj naszą ofertę.' },
     { property: 'og:image', content: '/images/og-image.jpg' },

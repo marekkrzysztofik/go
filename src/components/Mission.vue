@@ -1,11 +1,11 @@
 <template>
   <!-- Misja i wartości -->
   <div class="mission-section fade-in">
-    <h2 class="section-title">{{ langState.t.main.missionTitle }}</h2>
+    
     <div class="mission-cards">
       <div class="mission-card" v-for="item in langState.t.main.missionPoints" :key="item.title">
-        <div class="icon-wrapper">
-          <component :is="iconMap[item.icon]" size="28" stroke-width="2" />
+        <div>
+          <component :is="iconMap[item.icon]" class="feature-icon" size="28" stroke-width="2" />
         </div>
         <h3>{{ item.title }}</h3>
         <p>{{ item.text }}</p>
@@ -28,46 +28,40 @@ const iconMap = {
 
 <style scoped>
 .mission-section {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 80px auto 0;
   padding: 0 20px;
 }
 .section-title {
   font-size: 2rem;
-  color: #d63830;
+  color: var(--primary);
   margin-bottom: 1rem;
   font-weight: 600;
 }
 .mission-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0rem;
   margin-top: 2rem;
 }
 
 .mission-card {
+  width: 90%;
+  margin-bottom: 1rem;
   background: #fff;
   border-radius: 12px;
   padding: 2rem 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transition: all 0.3s ease;
 }
-
-.icon-wrapper {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: rgba(209, 60, 48, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #d63830;
-  margin-bottom: 1rem;
+.mission-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 2px 5px rgba(209, 60, 48, 0.5); 
 }
-
 .mission-card h3 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
@@ -78,5 +72,11 @@ const iconMap = {
   color: #555;
   font-size: 0.95rem;
   line-height: 1.6;
+}
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 16px;
+  color: var(--primary);
 }
 </style>
