@@ -273,7 +273,24 @@ export default {
     uploading: 'Uploading CV...',
     success: 'Application submitted successfully.',
     error: 'Something went wrong. Please try again later.'
-  }
+  },
+
+  products: {
+    title: 'Our Products',
+    subtitle: 'Hydraulic components and equipment of the highest quality',
+    productCategories: [
+      { name: 'Bite type fittings', image: '/images/products/bite-type.webp' },
+      { name: 'Flanges', image: '/images/products/flanges.webp' },
+      { name: 'Pipes', image: '/images/products/pipes.webp' },
+      { name: 'Hoses', image: '/images/products/hoses.webp' },
+      { name: 'Interpump', image: '/images/products/interpump.webp' },
+      { name: 'Hose Couplings', image: '/images/products/hose-couplings.webp' },
+      { name: 'Machines', image: '/images/products/machines.webp' },
+      { name: 'Valves', image: '/images/products/valves.webp' },
+      { name: 'JIC Flare Fittings', image: '/images/products/flare-fittings.webp' },
+      { name: 'Clamps', image: '/images/products/clamps.webp' },
+    ]
+  },
 }
 
 

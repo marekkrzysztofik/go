@@ -1,8 +1,5 @@
 <script setup>
 import Navbar from '@/components/Navbar.vue'
-import Navbar1 from '@/components/Navbar1.vue'
-import Navbar2 from '@/components/Navbar2.vue'
-import Navbar3 from '@/components/Navbar3.vue'
 import Footer from '@/components/Footer.vue'
 import CookieBaner from '@/components/CookieBaner.vue'
 import { watch } from 'vue'
@@ -19,9 +16,8 @@ watch(() => route.fullPath, () => {
 <template>
   <div class="app">
     <Navbar />
-     
     <RouterView />
-     <CookieBaner />
+    <CookieBaner />
     <Footer />
   </div>
 

@@ -92,9 +92,30 @@ export default {
         description: 'Zarządzanie transportem i odprawą elementów systemowych.',
         location: 'Zjednoczone Emiraty Arabskie',
         image: '/images/3.jpg'
-      }
+      },
+       {
+        title: 'Instalacja HPUwwww',
+        description: 'Montaż hydraulicznej jednostki sterującej w środowisku offshore.',
+        location: 'Norwegia',
+        image: '/images/1.jpg'
+      },
+      {
+        title: 'Modernizacja platformyww',
+        description: 'Generalny remont systemów rurowych i siłowników.',
+        location: 'Holandia',
+        image: '/images/1.jpg'
+      },
+      {
+        title: 'Projekt logistycznywww',
+        description: 'Zarządzanie transportem i odprawą elementów systemowych.',
+        location: 'Zjednoczone Emiraty Arabskie',
+        image: '/images/3.jpg'
+      },
     ]
   },
+
+
+
   mapTitle: 'Zrealizowane projekty i serwisy na świecie',
   mapSubtitle: 'Realizacje GLOBAL Offshore w strategicznych lokalizacjach przemysłu offshore.',
   mapButton: 'Zobacz nasze realizacje',
@@ -261,7 +282,23 @@ export default {
     uploading: 'Wysyłanie CV...',
     success: 'Aplikacja przesłana pomyślnie.',
     error: 'Coś poszło nie tak. Spróbuj ponownie później.'
-  }
+  },
 
+  products: {
+    title: 'Nasze Produkty',
+    subtitle: 'Komponenty i urządzenia hydrauliczne najwyższej jakości',
+    productCategories: [
+      { name: 'Złączki typu bite', image: '/images/products/bite-type.webp' },
+      { name: 'Kołnierze', image: '/images/products/flanges.webp' },
+      { name: 'Rury', image: '/images/products/pipes.webp' },
+      { name: 'Węże', image: '/images/products/hoses.webp' },
+      { name: 'Interpump', image: '/images/products/interpump.webp' }, // zostawiam bez tłumaczenia, bo to marka
+      { name: 'Szybkozłącza do węży', image: '/images/products/hose-couplings.webp' },
+      { name: 'Maszyny', image: '/images/products/machines.webp' },
+      { name: 'Zawory', image: '/images/products/valves.webp' },
+      { name: 'Złączki JIC (stożkowe)', image: '/images/products/flare-fittings.webp' },
+      { name: 'Obejmy', image: '/images/products/clamps.webp' },
+    ]
+  },
 
 }

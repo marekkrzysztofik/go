@@ -3,13 +3,13 @@
         <div class="header-section">
             <div class="overlay" />
             <div class="header-content">
-                <h1>Nasze Produkty</h1>
-                <p>Komponenty i urządzenia hydrauliczne najwyższej jakości</p>
+                <h1>{{ langState.t.main.products.title }}</h1>
+                <p>{{ langState.t.main.products.subtitle }}</p>
             </div>
         </div>
-
+ 
         <div class="product-grid">
-            <div v-for="(item, index) in productCategories" :key="index" class="product-card">
+            <div v-for="(item, index) in langState.t.main.products.productCategories" :key="index" class="product-card">
                 <img :src="item.image" :alt="item.name" />
                 <h3>{{ item.name }}</h3>
             </div>
@@ -18,18 +18,7 @@
 </template>
 
 <script setup>
-const productCategories = [
-    { name: 'Bite type fittings', image: '/images/products/bite-type.webp' },
-    { name: 'Flanges', image: '/images/products/flanges.webp' },
-    { name: 'Pipes', image: '/images/products/pipes.webp' },
-    { name: 'Hoses', image: '/images/products/hoses.webp' },
-    { name: 'Interpump', image: '/images/products/interpump.webp' },
-    { name: 'Hose Couplings', image: '/images/products/hose-couplings.webp' },
-    { name: 'Machines', image: '/images/products/machines.webp' },
-    { name: 'Valves', image: '/images/products/valves.webp' },
-    { name: 'JIC Flare Fittings', image: '/images/products/flare-fittings.webp' },
-    { name: 'Clamps', image: '/images/products/clamps.webp' },
-]
+import langState from '@/lang/langState'
 </script>
 
 <style scoped>

@@ -2,8 +2,8 @@
   <HeroSection2 />
   <About />
   <Services1 />
- 
-   <ContactForm />
+  <ContactForm />
+  <Projects/>
   <WhyUs />
   <OffshoreMap />
 </template>
@@ -11,20 +11,13 @@
 export const prerender = true
 </script>
 <script setup>
-import HeroSection from '@/components/HeroSection.vue'
 import HeroSection2 from '@/components/HeroSection2.vue'
-import Services from '@/components/Services.vue'
-import Services2 from '@/components/Services2.vue'
-import Services3 from '@/components/Services3.vue'
 import Services1 from '@/components/Services1.vue'
-import Servicesog from '@/components/Servicesog.vue'
 import WhyUs from '@/components/WhyUs.vue'
 import OffshoreMap from '@/components/OffshoreMap.vue'
 import ContactForm from '@/components/ContactForm.vue'
 import Mission from '@/components/Mission.vue'
-
 import Projects from '@/components/Projects.vue'
-import Process from '@/components/Process.vue'
 import { useHead } from '@vueuse/head'
 import { useRoute } from 'vue-router'
 import { onMounted, nextTick } from 'vue'

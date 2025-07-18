@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory, createMemoryHistory  } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import ContactView from '@/views/ContactView.vue'
-import Services3 from '@/components/Services3.vue'
 import FormView from '@/views/FormView.vue'
 import CarrerView from '@/views/CarrerView.vue'
 import CookieInfo from '@/views/CookieInfo.vue'
@@ -12,11 +11,6 @@ export const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
-  },
-  {
-    path: '/uslugi',
-    name: 'uslugi',
-    component: Services3,
   },
   {
     path: '/kontakt',
