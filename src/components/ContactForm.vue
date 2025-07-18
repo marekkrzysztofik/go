@@ -5,17 +5,16 @@
                 <h2>{{ langState.t.main.navbar.write }}</h2>
                 <form @submit.prevent="submitForm">
                     <input type="text" v-model="form.name" :placeholder="langState.t.main.reportForm.name" required />
-                    <input type="email" v-model="form.email" :placeholder="langState.t.main.reportForm.email" required />
-                    <textarea v-model="form.message" :placeholder="langState.t.main.reportForm.message" required></textarea>
+                    <input type="email" v-model="form.email" :placeholder="langState.t.main.reportForm.email"
+                        required />
+                    <textarea v-model="form.message" :placeholder="langState.t.main.message" required></textarea>
 
-                    <label class="checkbox-container">
-                        <input type="checkbox" v-model="form.accepted" required />
+                    <div class="checkbox-container">
                         <span>
-                            Twoje dane są bezpieczne. Wysyłając wiadomość, akceptujesz naszą politykę prywatności.
+                            {{ langState.t.main.policy }}
                         </span>
-                    </label>
-
-                    <button type="submit">SEND</button>
+                        <button type="submit">{{ langState.t.main.send }}</button>
+                    </div>
                 </form>
             </div>
             <div class="info-card" :class="{ visible: infoVisible }" v-intersect="() => (infoVisible = true)">
@@ -71,7 +70,7 @@ const form = ref({
 })
 
 const submitForm = () => {
-    if (form.value.accepted) {
+    if (form.value) {
         alert('Message sent!')
     } else {
         alert('Please accept the privacy policy.')
@@ -109,7 +108,6 @@ const submitForm = () => {
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 1;
-
     transform: scale(0.8);
     opacity: 0;
     transition: all 0.6s ease;
@@ -147,11 +145,11 @@ const submitForm = () => {
 
 .form-card {
     transform: translateY(-50%) scale(0.8);
-    height: 400px;
+    height: 420px;
     transition: all 0.6s ease;
     width: 80%;
     background-color: rgba(209, 60, 48, 1);
-    padding: 60px 40px;
+    padding: 40px 40px;
     border-radius: 20px;
     color: white;
     z-index: 2;
@@ -193,21 +191,39 @@ const submitForm = () => {
 }
 
 .checkbox-container {
+    margin: 0 auto;
     font-size: 12px;
     display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    margin-bottom: 20px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.checkbox-container span {
+    width: 260px;
+    margin-right: 2rem;
 }
 
 .form-card button {
-    background-color: #a72c27;
-    color: white;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 0.5rem 1.2rem;
+    background-color: var(--primary);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 24px;
+    border: solid white 1px;
+    font-weight: 600;
+    font-size: 0.9rem;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
+
+.form-card button:hover {
+    background: #fefefe;
+    color: var(--primary);
+}
+
 
 .icon {
     width: 2rem;

@@ -10,7 +10,7 @@
                 <span :class="{ open: isMenuOpen }"></span>
                 <span :class="{ open: isMenuOpen }"></span>
             </button>
-
+ 
             <transition name="slide-fade">
                 <ul v-show="isMenuOpen || isDesktop" class="nav-menu" @click="toggleMenu"
                     :class="{ desktop: isDesktop }">

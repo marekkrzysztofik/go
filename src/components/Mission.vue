@@ -60,7 +60,7 @@ const iconMap = {
 }
 .mission-card:hover {
   transform: translateY(-8px) scale(1.015);
-  box-shadow: 0 2px 5px rgba(209, 60, 48, 0.5); 
+  box-shadow: 0 2px 5px rgba(24, 24, 24, 0.5); 
 }
 .mission-card h3 {
   font-size: 1.2rem;

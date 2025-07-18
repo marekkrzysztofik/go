@@ -2,10 +2,9 @@
   <section class="intro-section">
     <div class="container">
       <div class="content">
-        <h2>Twoje wsparcie w projektach morskich</h2>
+        <h2>{{ langState.t.main.aboutTitle }}</h2>
         <p>
-          Specjalizujemy się w hydraulice siłowej, instalacjach offshore oraz kompleksowej obsłudze projektów – od
-          planowania po logistykę.
+          {{ langState.t.main.aboutSubtitle }}
         </p>
       </div>
     </div>
@@ -14,6 +13,7 @@
 </template>
 <script setup>
 import Mission from '@/components/Mission.vue'
+import langState from '@/lang/langState'
 </script>
 <style scoped>
 .wave-divider {

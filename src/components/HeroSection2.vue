@@ -44,8 +44,11 @@ import langState from '@/lang/langState'
     margin-top: -80px;
     width: 100%;
     position: relative;
-    height: 120vh;
-    background: url('/images/hero.jpg') center bottom / cover no-repeat;
+    height: 110vh;
+    background: url('/images/hero.jpg');
+    background-position: center -100px;
+    background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     color: white;
 }
@@ -85,6 +88,7 @@ import langState from '@/lang/langState'
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 2rem;
+    backdrop-filter: blur(2px);
 }
 
 .contact-button {
