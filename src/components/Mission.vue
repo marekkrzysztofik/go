@@ -79,4 +79,16 @@ const iconMap = {
   margin: 0 auto 16px;
   color: var(--primary);
 }
+
+@media (max-width: 768px) {
+  .mission-cards {
+   
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.mission-card {
+  margin-bottom: 3rem;
+}
+}
 </style>

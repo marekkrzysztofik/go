@@ -101,4 +101,10 @@ import langState from '@/lang/langState'
 .logo {
   width: 600px;
 }
+
+@media (max-width: 768px) {
+ .intro-section {
+    margin-top: 1rem;
+}
+}
 </style>

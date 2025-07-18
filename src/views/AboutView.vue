@@ -32,7 +32,7 @@ useHead({
   height: 110vh;
   position: relative;
   padding: 100px 20px;
-  background: url('/images/about.jpg') center center / cover no-repeat;
+  background: url('/images/global.jpg') center center / cover no-repeat;
   color: white;
 }
 
@@ -88,5 +88,19 @@ useHead({
   color: #d63830;
   margin-right: 8px;
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    margin-top: 0px;
+    height: 100vh;
+
+  }
+
+  .about-content {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    width: 80%;
+  }
 }
 </style>

@@ -18,7 +18,7 @@
                 </form>
             </div>
             <div class="info-card" :class="{ visible: infoVisible }" v-intersect="() => (infoVisible = true)">
-                <h2><span>You can find us on</span></h2>
+                <h2><span>{{ langState.t.main.contactData }}</span></h2>
                 <ul>
                     <li>
                         <MapPin class="icon" /> Gniewowska 12, 84-240 Reda
@@ -66,14 +66,32 @@ const form = ref({
     name: '',
     email: '',
     message: '',
-    accepted: false
 })
 
-const submitForm = () => {
-    if (form.value) {
-        alert('Message sent!')
+const submitForm = async () => {
+    const url = 'https://formspree.io/f/xqalaljw'
+
+    const payload = {
+        ...form.value,
+    }
+
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        alert('Formularz wysłany.')
+        form.value = {
+            name: '',
+            email: '',
+            message: '',
+        }
     } else {
-        alert('Please accept the privacy policy.')
+        alert('Błąd przy wysyłaniu formularza.')
     }
 }
 </script>
@@ -230,5 +248,20 @@ const submitForm = () => {
     color: #d63830;
     margin-right: 6px;
     vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column;
+    }
+
+    .info-card {
+        height: 400px;
+        margin-left: 0px;
+        margin-top: 2rem;
+        padding: 40px 40px;
+        width: 80%;
+        border-radius: 20px;
+    }
 }
 </style>

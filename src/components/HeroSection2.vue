@@ -7,7 +7,7 @@
             <p class="description">
                 {{ langState.t.main.heroDesc }}
             </p>
-            <button class="contact-button">{{ langState.t.main.navbar.contact }}</button>
+            <RouterLink to="/kontakt" class="contact-button"> {{ langState.t.main.navbar.contact }}</RouterLink>
         </div>
 
         <div class="wave-divider">
@@ -56,9 +56,7 @@ import langState from '@/lang/langState'
 .overlay {
     position: absolute;
     inset: 0;
-    /* background: rgba(11, 29, 81, 0.7); */
     background: rgba(24, 24, 24, 0.7);
-    /*  background: rgba(0, 17, 32, 0.6); */
     z-index: 1;
 }
 
@@ -95,6 +93,7 @@ import langState from '@/lang/langState'
     background-color: #d63830;
     color: white;
     border: none;
+    text-decoration: none;
     padding: 0.75rem 2rem;
     border-radius: 6px;
     font-size: 1rem;
@@ -105,5 +104,14 @@ import langState from '@/lang/langState'
 
 .contact-button:hover {
     background-color: #b62f27;
+}
+
+@media (max-width: 768px) {
+ .wave-divider {
+    display: none;
+}
+.overlay {
+    height: 86.5%;
+}
 }
 </style>

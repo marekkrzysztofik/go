@@ -138,7 +138,7 @@ const handleImageUpload = async (e) => {
 }
 
 const submitForm = async () => {
-  const url = 'https://formspree.io/f/mblobvbp' // zamień na swój ID
+  const url = 'https://formspree.io/f/xqalaljw' // zamień na swój ID
 
   const payload = {
     ...form.value,

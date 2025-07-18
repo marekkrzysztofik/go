@@ -22,12 +22,7 @@ export default {
   message: 'Wiadomość',
   send: 'Wyślij',
   policy: 'Twoje dane są bezpieczne. Wysyłając wiadomość, akceptujesz naszą politykę prywatności.',
-
-  // heroTitle: 'Projektujemy Twój kolejny rozdział.',
-  // heroSubtitle: 'Global Offshore oferuje sprawdzone usługi morskie i offshore — od systemów hydraulicznych po wsparcie projektowe.',
-  // heroButton: 'Zgłoś sprawę',
-  // heroProcessTitle: 'Zobacz projekty',
-
+  contactData: 'Dane kontaktowe',
 
 
   statsSection: {
@@ -40,8 +35,6 @@ export default {
       services: 'Serwisy offshore'
     }
   },
-
-
 
   ourOffer: {
     title: 'Nasza oferta',
@@ -271,59 +264,4 @@ export default {
   }
 
 
-  //ourOffer: {
-  //   title: 'Nasza oferta',
-  //   subtitle: 'Kompleksowe wsparcie od projektowania, przez serwis, aż po logistykę.',
-  //   groups: [
-  //     {
-  //       name: 'Produkcja',
-  //       src: '/images/produkcja.jpg',
-  //       services: [
-  //         { title: 'Zarządzanie projektami', description: 'Pełna kontrola i koordynacja projektów technicznych.' },
-  //         { title: 'Montaż mechaniczny', description: 'Profesjonalny montaż urządzeń i systemów.' },
-  //         { title: 'Instalacje hydrauliczne', description: 'Precyzyjne układy wysokociśnieniowe.' }
-  //       ]
-  //     },
-  //     {
-  //       name: 'Serwis',
-  //       src: '/images/serwis.png',
-  //       services: [
-  //         { title: 'Inspekcje', description: 'Kontrola i ocena stanu technicznego urządzeń.' },
-  //         { title: 'Rozwiązywanie usterek', description: 'Szybka diagnostyka i naprawa.' },
-  //         { title: 'Testy i uruchomienia', description: 'Kompleksowe testy końcowe i certyfikacja.' }
-  //       ]
-  //     },
-  //     {
-  //       name: 'Sprzedaż i logistyka',
-  //       src: '/images/sprzedaż-i-logistyka.png',
-  //       services: [
-  //         { title: 'Dostawy części', description: 'Komponenty OEM i zamienne.' },
-  //         { title: 'Logistyka i transport', description: 'Globalna obsługa dostaw i spedycji.' },
-  //         { title: 'Zakupy techniczne', description: 'Dobór i sourcing komponentów specjalistycznych.' }
-  //       ]
-  //     }
-  //   ]
-  // },
-  // processSection: {
-  //   title: 'Proces współpracy',
-  //   subtitle: 'Przejrzysty przebieg każdego projektu – od zapytania po realizację i wsparcie.',
-  //   steps: [
-  //     {
-  //       title: 'Konsultacja',
-  //       description: 'Zbieramy wymagania techniczne, omawiamy szczegóły projektu.'
-  //     },
-  //     {
-  //       title: 'Planowanie',
-  //       description: 'Opracowujemy harmonogram, dobieramy zasoby i zespół.'
-  //     },
-  //     {
-  //       title: 'Realizacja',
-  //       description: 'Wykonujemy montaż, testy i dostawy w ustalonych terminach.'
-  //     },
-  //     {
-  //       title: 'Wsparcie',
-  //       description: 'Zapewniamy serwis, pomoc i długoterminowe wsparcie techniczne.'
-  //     }
-  //   ]
-  // },
 }

@@ -103,7 +103,7 @@ const handleCvUpload = async (e) => {
 }
 
 const submitForm = async () => {
-  const url = 'https://formspree.io/f/mblobvbp'
+  const url = 'https://formspree.io/f/xqalaljw'
 
   const payload = {
     ...form.value,

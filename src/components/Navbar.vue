@@ -56,12 +56,9 @@
       <div class="mobile-menu" v-if="isMenuOpen && !isDesktop" @click.self="toggleMenu">
         <nav class="mobile-nav">
           <RouterLink @click="toggleMenu" to="/about">{{ langState.t.main.navbar.about }}</RouterLink>
+          <RouterLink @click="toggleMenu" to="/produkty">{{ langState.t.main.navbar.products }}</RouterLink>
           <RouterLink @click="toggleMenu" to="/kariera">{{ langState.t.main.navbar.carrers }}</RouterLink>
-          <RouterLink @click="toggleMenu" to="/produkty">Products</RouterLink>
-          <RouterLink @click="toggleMenu" to="/map">Map</RouterLink>
           <RouterLink @click="toggleMenu" to="/kontakt">{{ langState.t.main.navbar.contact }}</RouterLink>
-          <RouterLink @click="toggleMenu" to="/zgloszenie" class="nav-button"> {{ langState.t.main.heroButton }}
-          </RouterLink>
           <button class="nav-button" @click="toggleLang">
             <Globe class="icon" />
             {{ langState.lang.toUpperCase() }}
@@ -275,6 +272,7 @@ onUnmounted(() => {
   color: var(--primary);
 }
 
+
 .nav-button .icon {
   width: 18px;
   height: 18px;
@@ -347,7 +345,7 @@ onUnmounted(() => {
 }
 
 .mobile-nav a,
-.mobile-nav button {
+.mobile-nav {
   font-size: 1.1rem;
   color: var(--primary);
   text-decoration: none;

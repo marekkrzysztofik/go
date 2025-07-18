@@ -17,13 +17,10 @@ export default {
   aboutSubtitle: 'We specialize in hydraulic systems, offshore installations, and comprehensive project support – from planning to logistics.',
 
 
-  // heroTitle: 'We design your next chapter.',
-  // heroSubtitle: 'Global Offshore provides proven marine and offshore services — from hydraulic systems to project support.',
-  // heroButton: 'Report an issue',
-  // heroProcessTitle: 'View projects',
   message: 'Message',
   send: 'Send',
   policy: 'Your data is safe. By sending a message, you accept our privacy policy.',
+  contactData: 'You can find us on',
 
 
   statsSection: {
@@ -69,28 +66,7 @@ export default {
       }
     ]
   },
-  processSection: {
-    title: 'Our process',
-    subtitle: 'A transparent flow for every project – from inquiry to execution and support.',
-    steps: [
-      {
-        title: 'Consultation',
-        description: 'We gather technical requirements and discuss project details.'
-      },
-      {
-        title: 'Planning',
-        description: 'We prepare the schedule and assign resources and the team.'
-      },
-      {
-        title: 'Execution',
-        description: 'We carry out installation, testing, and deliveries on schedule.'
-      },
-      {
-        title: 'Support',
-        description: 'We provide service, assistance, and long-term technical support.'
-      }
-    ]
-  },
+
   projectsSection: {
     title: 'Projects and case studies',
     subtitle: 'Explore selected implementations from around the world.',
@@ -119,6 +95,7 @@ export default {
   mapSubtitle: 'GLOBAL Offshore projects in strategic offshore industry locations.',
   mapButton: 'View our projects',
 
+  
   contactTitle: 'Contact',
   contactDesc: 'Global Offshore - comprehensive support for offshore projects around the world.',
   departmentsTitle: 'Departments',
