@@ -3,7 +3,6 @@
   <About />
   <Services1 />
   <ContactForm />
-  <Projects/>
   <WhyUs />
   <OffshoreMap />
 </template>

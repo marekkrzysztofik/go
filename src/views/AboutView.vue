@@ -1,23 +1,26 @@
 <template>
   <section class="about-section">
-    <div class="overlay"></div>
-    <div class="about-content fade-in-right">
-      <h2 class="section-title">{{ langState.t.main.about.title }}</h2>
-      <p class="section-text">{{ langState.t.main.about.description }}</p>
+    <div class="about-left">
+      <div class="about-content">
+        <h2 class="section-title">{{ langState.t.main.about.title }}</h2>
+        <p class="section-text">{{ langState.t.main.about.description }}</p>
 
-      <ul class="about-list">
-        <li v-for="(value, index) in langState.t.main.about.values" :key="index">
-          <span class="check">✔</span> {{ value }}
-        </li>
-      </ul>
+        <ul class="about-list">
+          <li v-for="(value, index) in langState.t.main.about.values" :key="index">
+            <span class="check">✔</span> {{ value }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="about-right">
+      <img src="/images/global.jpg" alt="Global Offshore" class="bg-image" />
     </div>
   </section>
 </template>
 
 <script setup>
 import langState from '@/lang/langState'
-import Mission from '@/components/Mission.vue'
-import Features from '@/components/Features.vue'
 import { useHead } from '@vueuse/head'
 
 useHead({
@@ -28,47 +31,49 @@ useHead({
 <style scoped>
 .about-section {
   margin-top: -80px;
+  display: flex;
+  height: 100vh;
   width: 100%;
-  height: 110vh;
-  position: relative;
-  padding: 100px 20px;
-  background: url('/images/global.jpg') center center / cover no-repeat;
-  color: white;
+  overflow: hidden;
+  flex-direction: row;
 }
 
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(24, 24, 24, 0.7);
-  z-index: 1;
+.about-left {
+  flex: 0 0 40%;
+  background: rgba(24, 24, 24, 1);
+  color: white;
+  padding: 4rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-right {
+  flex: 0 0 60%;
+  position: relative;
+}
+
+.bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-content {
+  max-width: 600px;
 }
 
 .section-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #d63830;
   margin-bottom: 1rem;
   font-weight: 600;
 }
 
 .section-text {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: white;
   margin-bottom: 1.5rem;
-}
-
-.about-content {
-  margin-top: 6rem;
-  margin-left: 4rem;
-  width: 40%;
-  position: relative;
-  z-index: 2;
-}
-
-@media (min-width: 768px) {
-  .about-grid {
-    flex-direction: row;
-    align-items: center;
-  }
 }
 
 .about-list {
@@ -77,8 +82,7 @@ useHead({
 }
 
 .about-list li {
-  font-size: 1.2rem;
-  color: white;
+  font-size: 1.1rem;
   margin-bottom: 0.6rem;
   display: flex;
   align-items: center;
@@ -86,21 +90,36 @@ useHead({
 
 .check {
   color: #d63830;
-  margin-right: 8px;
+  margin-right: 10px;
   font-weight: bold;
 }
 
 @media (max-width: 768px) {
   .about-section {
-    margin-top: 0px;
-    height: 100vh;
-
+    flex-direction: column;
+    height: auto;
   }
 
-  .about-content {
-    margin-top: 1rem;
-    margin-left: 2rem;
-    width: 80%;
+  .about-left,
+  .about-right {
+    width: 100%;
+    height: 50vh;
+  }
+
+  .about-left {
+    padding: 2rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-text {
+    font-size: 1rem;
+  }
+
+  .about-list li {
+    font-size: 1rem;
   }
 }
 </style>
